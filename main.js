@@ -16,12 +16,19 @@ let tasks = [[32, 55],
 // Moves task to the previous or next column
 function MoveTask(taskId, columnId, direction) {
     // Find the task element and remove it
-    tasks[columnId] = tasks[columnId].filter(task => task !== taskId) // TODO - Check if this inequality also works with objects instead of integers
+    // tasks[columnId] = tasks[columnId].filter(task => task != taskId) // TODO - Check if this inequality also works with objects instead of integers
+    tasks[columnId].splice(tasks[columnId].indexOf(taskId), 1)
     // Add it to the next column
-    tasks[(columnId + direction)%2].push(taskId)
+    let newColumnId = Math.min(Math.max(columnId + direction, 0), 2)
+    tasks[newColumnId].push(taskId)
     // Update UI
     Render()
 }
+setTimeout(() => {
+    MoveTask(71, 2, -1)
+    Render()
+}, 2000);
+
 
 // Helper functions
 function NewTaskWrapper() {
