@@ -24,10 +24,15 @@ function MoveTask(taskId, columnId, direction) {
 }
 
 // Helper functions
+function NewTaskWrapper() {
+    console.log("Test");
+    NewTask(tasks[0])
+}
+
 function NewTask(taskType) {
     let newId = 0
     let u = 0
-    let i = 32
+    let i = 0
     while (u == 0) {
         if(taskType.includes(i) == false){
             newId = i
