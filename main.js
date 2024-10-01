@@ -5,9 +5,13 @@ let doingElement = document.getElementById("doing-column")
 let doneElement = document.getElementById("done-column")
 
 // Global state
-let todoTask = [32]
-let doingTask = [12]
-let doneTask = [71]
+let tasks = [[32, 55],
+             [12],
+             [71]]
+
+// let todoTask = [32]
+// let doingTask = [12]
+// let doneTask = [71]
 
 // Moves task to the previous or next column
 function MoveTask(taskId, columnId, direction) {
@@ -18,7 +22,7 @@ function MoveTask(taskId, columnId, direction) {
     // Update UI
     Render()
 }
-NewTask(todoTask)
+
 // Helper functions
 function NewTask(taskType) {
     let newId = 0
@@ -32,12 +36,11 @@ function NewTask(taskType) {
         }
         i++
     }
-    console.log(todoTask)
-}
+    // console.log(todoTask)
 
-let tasks = [[32, 55],
-             [12],
-             [71]]
+    Render()
+}
+// NewTask(todoTask)
              
 // Updates task columns HTML, should be called every time "tasks" is modified
 function Render() {
