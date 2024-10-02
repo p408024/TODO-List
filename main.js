@@ -101,30 +101,75 @@ function render() {
 
     // Add a task card HTML element for every task in "tasks" array
     tasks[0].forEach(task => {
+        // todoElement.innerHTML += `
+        //     <div id=${task.id} style="background-color: beige; display: flex; flex-direction: horizontal; margin: .5rem; padding: 1rem; justify-content: center;">
+        //         <button style="width: 100%" onClick="moveTask(this, -1)">⬅️</button>
+        //         <h1 style="margin: .5rem;">${task.id}</h1>
+        //         <button style="width: 100%" onClick="moveTask(this, 1)">➡️</button>
+        //     </div>`
         todoElement.innerHTML += `
-            <div id=${task.id} style="background-color: beige; display: flex; flex-direction: horizontal; margin: .5rem; padding: 1rem; justify-content: center;">
-                <button style="width: 100%" onClick="moveTask(this, -1)">⬅️</button>
-                <h1 style="margin: .5rem;">${task.id}</h1>
-                <button style="width: 100%" onClick="moveTask(this, 1)">➡️</button>
+            <div id=${task.id} class="taskbox">
+                <button class="accordion active">${task.title}</button>
+                <div class="panel" style="display: none;">
+                    <p>${task.description}</p>
+                    <div class="btn-container">
+                        <button class="btn" onClick="moveTask(this, -1)">⏪</button>
+                        <button class="btn">🎨</button>
+                        <button class="btn">🕒</button>
+                        <button class="btn">✏️</button>
+                        <button class="btn">❌</button>
+                        <button class="btn" onClick="moveTask(this, 1)>⏩</button>
+                    </div>
+                </div>
             </div>`
+
     });
 
     tasks[1].forEach(task => {
         doingElement.innerHTML += `
-            <div id=${task.id} style="background-color: beige; display: flex; flex-direction: horizontal; margin: .5rem; padding: 1rem; justify-content: center;">
-                <button style="width: 100%" onclick="moveTask(this, -1)">⬅️</button>
-                <h1 style="margin: .5rem;">${task.id}</h1>
-                <button style="width: 100%" onclick="moveTask(this, 1)">➡️</button>
+            <div id=${task.id} class="taskbox">
+                <button class="accordion active">${task.title}</button>
+                <div class="panel" style="display: none;">
+                    <p>${task.description}</p>
+                    <div class="btn-container">
+                        <button class="btn" onClick="moveTask(this, -1)">⏪</button>
+                        <button class="btn">🎨</button>
+                        <button class="btn">🕒</button>
+                        <button class="btn">✏️</button>
+                        <button class="btn">❌</button>
+                        <button class="btn" onClick="moveTask(this, 1)>⏩</button>
+                    </div>
+                </div>
             </div>`
     });
 
     tasks[2].forEach(task => {
         doneElement.innerHTML += `
-            <div id=${task.id} style="background-color: beige; display: flex; flex-direction: horizontal; margin: .5rem; padding: 1rem; justify-content: center;">
-                <button style="width: 100%" onclick="moveTask(this, -1)">⬅️</button>
-                <h1 style="margin: .5rem;">${task.id}</h1>
-                <button style="width: 100%" onclick="moveTask(this, 1)">➡️</button>
+            <div id=${task.id} class="taskbox">
+                <button class="accordion active">${task.title}</button>
+                <div class="panel" style="display: none;">
+                    <p>${task.description}</p>
+                    <div class="btn-container">
+                        <button class="btn" onClick="moveTask(this, -1)">⏪</button>
+                        <button class="btn">🎨</button>
+                        <button class="btn">🕒</button>
+                        <button class="btn">✏️</button>
+                        <button class="btn">❌</button>
+                        <button class="btn" onClick="moveTask(this, 1)>⏩</button>
+                    </div>
+                </div>
             </div>`
+        doneElement.getElementsByClassName("accordion")[0].addEventListener("click", (e) => {
+            // console.log(e.target);
+            e.target.classList.toggle("active");
+            let panel = e.target.nextElementSibling;
+            console.log(panel);
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        })
     });
 }
 render()
