@@ -13,6 +13,7 @@ let tasks = [
 //#region TASK FUNCTIONS
 // Moves task to the previous or next column
 function MoveTask(el, direction) {
+    // Find task and column ids
     let taskId = el.parentElement.id
     let columnId = 0
     switch (el.parentElement.parentElement.id) {
@@ -22,16 +23,20 @@ function MoveTask(el, direction) {
     }
 
     // Find the task element and remove it
+    let taskToMove = {}
     for (let i = 0; i < tasks[columnId].length; i++) {
         // console.log("comparing " + taskId + " with " + tasks[columnId][i]);
-        if (tasks[columnId][i] == taskId) {
+        if (tasks[columnId][i].id == taskId) {
+            taskToMove = tasks[columnId][i]
             tasks[columnId].splice(i, 1)
         }
     }
+    if(taskToMove == {}) return
 
     // Add it to the next column
     let newColumnId = Math.min(Math.max(columnId + direction, 0), 2)
-    tasks[newColumnId].push(taskId)
+    tasks[newColumnId].push(taskToMove)
+
     // Update UI
     Render()
 }
