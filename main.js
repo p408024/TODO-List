@@ -55,17 +55,17 @@ function newTask(columnId) {
     for (let i = 0; i < tasks[2].length; i++) {
         allId.push(tasks[2][i].id)
     }
-    console.log(allId)
+    // console.log(allId)
     let newId = 0
     let u = 0
     let x = 52
     while (u == 0) {
         if (allId.includes(x) == false) {
             newId = x
-            console.log(newId)
+            // console.log(newId)
             columnToAdd.push({id: newId, title: "Hola", description: "aloh"})
             u = 1
-            console.log(columnToAdd)
+            // console.log(columnToAdd)
         }
         x++
         // if(columnToAdd[0].id == false && columnToAdd[0].id.includes(i) == false && columnToAdd[0].id.includes(i) == false){
@@ -114,9 +114,10 @@ function modifyTask(el) {
 // Updates task columns HTML, should be called every time "tasks" is modified
 function render() {
     // Clear columns
-    todoElement.innerHTML = todoElement.getElementsByClassName("column-title")[0].outerHTML
-    doingElement.innerHTML = doingElement.getElementsByClassName("column-title")[0].outerHTML
-    doneElement.innerHTML = doneElement.getElementsByClassName("column-title")[0].outerHTML
+    // FIXME - Buttons get deleted because all elements with "persistent" class should avoid being deleted, not just the first one
+    todoElement.innerHTML = todoElement.getElementsByClassName("persistent")[0].outerHTML
+    doingElement.innerHTML = doingElement.getElementsByClassName("persistent")[0].outerHTML
+    doneElement.innerHTML = doneElement.getElementsByClassName("persistent")[0].outerHTML
 
     // Add a task card HTML element for every task in "tasks" array
     tasks[0].forEach(task => {
