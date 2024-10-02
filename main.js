@@ -61,17 +61,11 @@ function NewTask(columnId) {
 }
 
 function deleteTask(taskId) {
-    if(tasks[0].includes(taskId) == true){
-        let position = tasks[0].indexOf(taskId)
-        tasks[0].splice(position, 1)
-    }
-    if(tasks[1].includes(taskId) == true){
-        let position = tasks[1].indexOf(taskId)
-        tasks[1].splice(position, 1)
-    }
-    if(tasks[2].includes(taskId) == true){
-        let position = tasks[2].indexOf(taskId)
-        tasks[2].splice(position, 1)
+    for (let i = 0; i < tasks.length; i++) {
+        for (let j = 0; j < tasks[i].length; j++) {
+            if (tasks[i][j].id == taskId)
+                tasks[i].splice(j, 1)
+        }
     }
     Render()
 }
