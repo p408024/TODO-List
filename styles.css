@@ -33,9 +33,17 @@
     border-radius: 4px;
 }
 
+.column-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-/* Estilo del div del boton de añadir tasca */
-.task-add-btn {
+.column-title button{
+    margin: .5rem;
+    width: 90%;
+}
 
 }
 
