@@ -5,24 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <script src="main.js" defer></script> 
-    <title>TODO App</title>
+    <title>TO-DO App</title>
 </head>
 <body>
- <div class="hamburger"></div>
- <div class="hamburger"></div>
- <div class="hamburger"></div>
- <center><h1> Todo List</h1></center>
+ <div>
+    <div class="hamburger"></div>
+    <div class="hamburger"></div>
+    <div class="hamburger"></div>
+    <h1 style="text-align: center; margin-top: -20px;margin-bottom: 30px; font-family: sans-serif; font-size: 40px; font-weight: 1000;"> To-Do List</h1>
+</div>
  
  <div class="col-container">
      <div id="todo-column" class="task-column">
-         <h3>Todo column</h3>
-         <button class="accordion active">Tasca 1</button>
-         <div class="panel" style="display: none;">
-         <p>Descripción de la tasca</p>
-             <button class="mover">Mover tasca</button>
-             <button class="editar">Editar tasca</button>
-             <button class="eliminar">Eliminar tasca</button>
-         </div>
+         <h3>To-Do column</h3>
+         <div class="taskbox">
+            <button class="accordion active">Tasca 1</button>
+            <div class="panel" style="display: none;">
+                <p>Descripción de la tasca</p>
+                <div class="btn-container">
+                    <button class="btn">⏪</button>
+                    <button class="btn">🎨</button>
+                    <button class="btn">🕒</button>
+                    <button class="btn">✏️</button>
+                    <button class="btn">❌</button>
+                    <button class="btn">⏩</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="taskbox">
+            <button class="accordion active">Tasca 2</button>
+            <div class="panel" style="display: none;">
+                <p>Descripción de la tasca</p>
+                <div class="btn-container">
+                    <button class="btn">⏪</button>
+                    <button class="btn">🎨</button>
+                    <button class="btn">🕒</button>
+                    <button class="btn">✏️</button>
+                    <button class="btn">❌</button>
+                    <button class="btn">⏩</button>
+                </div>
+            </div>
+        </div>
     
          <div id="task-01" class="task-add-btn"></div>
          <div id="todo-add" class="task-card"></div>
@@ -31,13 +55,21 @@
      
      <div id="doing-column" class="task-column">
          <h3>Doing column</h3>
-         <button class="accordion">Tasca 2</button>
-         <div class="panel" style="display: none;">
-         <p>Descripción de la tasca</p>
-             <button class="mover">Mover tasca</button>
-             <button class="editar">Editar tasca</button>
-             <button class="eliminar">Eliminar tasca</button>
-         </div>
+         <div class="taskbox">
+            <button class="accordion active">Tasca 3</button>
+            <div class="panel" style="display: none;">
+                <p>Descripción de la tasca</p>
+                <div class="btn-container">
+                    <button class="btn">⏪</button>
+                    <button class="btn">🎨</button>
+                    <button class="btn">🕒</button>
+                    <button class="btn">✏️</button>
+                    <button class="btn">❌</button>
+                    <button class="btn">⏩</button>
+                </div>
+            </div>
+        </div>
+        
          <div id="task-02" class="task-card"></div>
 
          <div id="task-01" class="task-add-btn"></div>
@@ -47,44 +79,90 @@
      
      <div id="done-column" class="task-column">
          <h3>Done column</h3>
-         <button class="accordion">Tasca 3</button>
-         <div class="panel" style="display: none;">
-          <p>Descripción de la tasca</p>
-             <button class="mover">Mover tasca</button>
-             <button class="editar">Editar tasca</button>
-             <button class="eliminar">Eliminar tasca</button>
-         </div>
-         <div id="task-03" class="task-card"></div>
-         <button class="accordion">Tasca 4</button>
-         <div class="panel" style="display: none;">
-         <p>Descripción de la tasca</p>
-             <button class="mover">Mover tasca</button>
-             <button class="editar">Editar tasca</button>
-             <button class="eliminar">Eliminar tasca</button>
-        
-     </div>
-     <div id="task-04" class="task-card"></div>
-         <button class="accordion">Tasca 5</button>
-         <div class="panel" style="display: none;">
-         <p>Descripción de la tasca</p>
-             <button class="mover">Mover tasca</button>
-             <button class="editar">Editar tasca</button>
-             <button class="eliminar">Eliminar tasca</button>
-        
-     </div>
-     <div id="task-05" class="task-card"></div>
-         <button class="accordion">Tasca 6</button>
-         <div class="panel" style="display: none;">
-         <p>Descripción de la tasca</p>
-             <button class="mover">Mover tasca</button>
-             <button class="editar">Editar tasca</button>
-             <button class="eliminar">Eliminar tasca</button>
-        
-     </div>
+         
+         <div class="taskbox">
+            <button class="accordion active">Tasca 4</button>
+            <div class="panel" style="display: none;">
+                <p>Descripción de la tasca</p>
+                <div class="btn-container">
+                    <button class="btn">⏪</button>
+                    <button class="btn">🎨</button>
+                    <button class="btn">🕒</button>
+                    <button class="btn">✏️</button>
+                    <button class="btn">❌</button>
+                    <button class="btn">⏩</button>
+                </div>
+            </div>
+        </div>
 
-     <div id="task-01" class="task-add-btn"></div>
-         <div id="todo-add" class="task-card"></div>
-         <button class="task-plus">+</button>
+         <div id="task-03" class="task-card"></div>
+
+         <div class="taskbox">
+            <button class="accordion active">Tasca 5</button>
+            <div class="panel" style="display: none;">
+                <p>Descripción de la tasca</p>
+                <div class="btn-container">
+                    <button class="btn">⏪</button>
+                    <button class="btn">🎨</button>
+                    <button class="btn">🕒</button>
+                    <button class="btn">✏️</button>
+                    <button class="btn">❌</button>
+                    <button class="btn">⏩</button>
+                </div>
+            </div>
+        </div>
+
+     <div id="task-04" class="task-card"></div>
+
+     <div class="taskbox">
+        <button class="accordion active">Tasca 6</button>
+        <div class="panel" style="display: none;">
+            <p>Descripción de la tasca</p>
+                <div class="btn-container">
+                    <button class="btn">⏪</button>
+                    <button class="btn">🎨</button>
+                    <button class="btn">🕒</button>
+                    <button class="btn">✏️</button>
+                    <button class="btn">❌</button>
+                    <button class="btn">⏩</button>
+                </div>
+        </div>
+    </div>
+
+     <div id="task-05" class="task-card"></div>
+     
+     <div class="taskbox">
+        <button class="accordion active">Tasca 7</button>
+        <div class="panel" style="display: none;">
+            <p>Descripción de la tasca</p>
+                <div class="btn-container">
+                    <button class="btn">⏪</button>
+                    <button class="btn">🎨</button>
+                    <button class="btn">🕒</button>
+                    <button class="btn">✏️</button>
+                    <button class="btn">❌</button>
+                    <button class="btn">⏩</button>
+                </div>
+        </div>
+    </div>
+
+    <div class="taskbox">
+        <button class="accordion active">Tasca 8</button>
+        <div class="panel" style="display: none;">
+            <p>Descripción de la tasca</p>
+                <div class="btn-container">
+                    <button class="btn">⏪</button>
+                    <button class="btn">🎨</button>
+                    <button class="btn">🕒</button>
+                    <button class="btn">✏️</button>
+                    <button class="btn">❌</button>
+                    <button class="btn">⏩</button>
+                </div>
+        </div>
+    </div>
+
+        <button class="task-plus">+</button>
+
  </div>
 </body>
 </html>
