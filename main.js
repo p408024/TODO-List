@@ -37,6 +37,7 @@ function MoveTask(el, direction) {
 function NewTask(columnId) {
     let columnToAdd = tasks[columnId]
 
+    // Create new task data (id)
     let newId = 0
     let u = 0
     let i = 0
