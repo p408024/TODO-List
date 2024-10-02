@@ -24,11 +24,6 @@ function MoveTask(taskId, columnId, direction) {
     // Update UI
     Render()
 }
-setTimeout(() => {
-    MoveTask(71, 2, -1)
-    Render()
-}, 2000);
-
 
 // Helper functions
 function NewTaskWrapper() {
