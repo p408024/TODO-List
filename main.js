@@ -22,7 +22,7 @@ function MoveTask(taskId, columnId, direction) {
 }
 
 function NewTask(columnId) {
-    let columnToAdd = task[columnId]
+    let columnToAdd = tasks[columnId]
 
     let newId = 0
     let u = 0
