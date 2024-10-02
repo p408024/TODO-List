@@ -11,7 +11,7 @@ let tasks = [
 ]
 
 //#region TASK FUNCTIONS
-// Moves task to the previous or next column
+// Moves task to the previous or next column, direction is -1 for left and 1 for right
 function moveTask(el, direction) {
     // Find task and column ids
     let taskId = el.parentElement.id
@@ -40,6 +40,7 @@ function moveTask(el, direction) {
     // Update UI
     render()
 }
+// TODO - Update function to drag behaviour ^^^^^^
 
 function newTask(columnId) {
     let columnToAdd = tasks[columnId]
@@ -68,6 +69,26 @@ function deleteTask(taskId) {
         }
     }
     render()
+}
+
+// TODO - Finish the behaviour when the popup html is merged 
+function modifyTask(el) {
+    // HTML References
+    let taskElement   = el.parentElement.parentElement
+    let titleEl       = taskElement.getElementsByClassName("task-title")[0]
+    let descriptionEl = taskElement.getElementsByClassName("task-description")[0]
+        
+    // Find column and task id
+    let columnId = el.parentElement.parentElement.parentElement.id
+    let taskId = taskElement.id
+
+
+    // VVVV Discarded, modification will be done with div popup VVVV
+    // Update html (this function doesn't call the render function and handles the DOM update by itself)
+    // titleEl.innerHTML       = tasks[columnId][taskId].id
+    // descriptionEl.innerHTML = tasks[columnId][taskId].description
+
+    // Change task card state to "input" version, hiding/showing buttons, text and input fields
 }
 //#endregion
              
