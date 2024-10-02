@@ -5,9 +5,9 @@ let doneElement = document.getElementById("done-column")
 
 // Global state
 let tasks = [
-    [{ id: 0, title: "Comprar ous", description: "anar al mercadona i comprar ous XL" }],
-    [{ id: 1, title: "Comprar pomes", description: "pomespomespomespomes"}],
-    [{ id: 2, title: "Netejar cuina (lejía)", description: "cuinacuinacuinacuinacuinacuina" }]
+    [{ id: 20, title: "Comprar ous", description: "anar al mercadona i comprar ous XL" }],
+    [{ id: 53, title: "Comprar pomes", description: "pomespomespomespomes"}],
+    [{ id: 63, title: "Netejar cuina (lejía)", description: "cuinacuinacuinacuinacuinacuina" }]
 ]
 
 //#region TASK FUNCTIONS
@@ -82,27 +82,27 @@ function Render() {
     // Add a task card HTML element for every task in "tasks" array
     tasks[0].forEach(task => {
         todoElement.innerHTML += `
-            <div id=${task} style="background-color: beige; display: flex; flex-direction: horizontal; margin: .5rem; padding: 1rem; justify-content: center;">
+            <div id=${task.id} style="background-color: beige; display: flex; flex-direction: horizontal; margin: .5rem; padding: 1rem; justify-content: center;">
                 <button style="width: 100%" onClick="MoveTask(this, -1)">⬅️</button>
-                <h1 style="margin: .5rem;">${task}</h1>
+                <h1 style="margin: .5rem;">${task.id}</h1>
                 <button style="width: 100%" onClick="MoveTask(this, 1)">➡️</button>
             </div>`
     });
 
     tasks[1].forEach(task => {
         doingElement.innerHTML += `
-            <div id=${task} style="background-color: beige; display: flex; flex-direction: horizontal; margin: .5rem; padding: 1rem; justify-content: center;">
+            <div id=${task.id} style="background-color: beige; display: flex; flex-direction: horizontal; margin: .5rem; padding: 1rem; justify-content: center;">
                 <button style="width: 100%" onclick="MoveTask(this, -1)">⬅️</button>
-                <h1 style="margin: .5rem;">${task}</h1>
+                <h1 style="margin: .5rem;">${task.id}</h1>
                 <button style="width: 100%" onclick="MoveTask(this, 1)">➡️</button>
             </div>`
     });
 
     tasks[2].forEach(task => {
         doneElement.innerHTML += `
-            <div id=${task} style="background-color: beige; display: flex; flex-direction: horizontal; margin: .5rem; padding: 1rem; justify-content: center;">
+            <div id=${task.id} style="background-color: beige; display: flex; flex-direction: horizontal; margin: .5rem; padding: 1rem; justify-content: center;">
                 <button style="width: 100%" onclick="MoveTask(this, -1)">⬅️</button>
-                <h1 style="margin: .5rem;">${task}</h1>
+                <h1 style="margin: .5rem;">${task.id}</h1>
                 <button style="width: 100%" onclick="MoveTask(this, 1)">➡️</button>
             </div>`
     });
