@@ -24,31 +24,30 @@ function MoveTask(taskId, columnId, direction) {
     // Update UI
     Render()
 }
-setTimeout(() => {
-    MoveTask(71, 2, -1)
-    Render()
-}, 2000);
+// setTimeout(() => {
+//     MoveTask(71, 2, -1)
+//     Render()
+// }, 2000);
 
 
 // Helper functions
 function NewTaskWrapper() {
     console.log("Test");
-    NewTask(tasks[0])
+    NewTask(tasks[2])
 }
-
 function NewTask(taskType) {
     let newId = 0
     let u = 0
     let i = 0
     while (u == 0) {
-        if(taskType.includes(i) == false){
+        if(tasks[0].includes(i) == false && tasks[1].includes(i) == false && tasks[2].includes(i) == false){
             newId = i
             taskType.push(newId)
             u = 1
         }
         i++
     }
-    // console.log(todoTask)
+    console.log(tasks)
 
     Render()
 }
