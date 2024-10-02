@@ -5,9 +5,9 @@ let doingElement = document.getElementById("doing-column")
 let doneElement = document.getElementById("done-column")
 
 // Global state
-let tasks = [[32, 55],
-             [12],
-             [71]]
+let tasks = [[32, 55, 0],
+             [12, 1],
+             [71, 2]]
 
 // let todoTask = [32]
 // let doingTask = [12]
