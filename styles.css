@@ -24,7 +24,17 @@
     padding: 10px;
 }
 
+.column-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.column-title button{
+    margin: .5rem;
+    width: 90%;
+}
 
 /* Estilo del div de cada tasca */
 .task-card {

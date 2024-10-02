@@ -1,79 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <script src="main.js" defer></script> 
+    <script src="main.js" defer></script>
     <title>TODO App</title>
 </head>
+
 <body>
- <div class="hamburger"></div>
- <div class="hamburger"></div>
- <div class="hamburger"></div>
- <center><h1> Todo List</h1></center>
- 
- <div class="col-container">
-     <div id="todo-column" class="task-column">
-         <h3>Todo column</h3>
-         <button class="accordion">Tasca 1</button>
-         <div class="panel">
-         <p>Descripción de la tasca</p>
-             <button class="mover">Mover tasca</button>
-             <button class="editar">Editar tasca</button>
-             <button class="eliminar">Eliminar tasca</button>
-         </div>
-         <div id="task-01" class="task-card"></div>
-     </div>
-     
-     <div id="doing-column" class="task-column">
-         <h3>Doing column</h3>
-         <button class="accordion">Tasca 2</button>
-         <div class="panel">
-         <p>Descripción de la tasca</p>
-             <button class="mover">Mover tasca</button>
-             <button class="editar">Editar tasca</button>
-             <button class="eliminar">Eliminar tasca</button>
-         </div>
-         <div id="task-02" class="task-card"></div>
-     </div>
-     
-     <div id="done-column" class="task-column">
-         <h3>Done column</h3>
-         <button class="accordion">Tasca 3</button>
-         <div class="panel">
-          <p>Descripción de la tasca</p>
-             <button class="mover">Mover tasca</button>
-             <button class="editar">Editar tasca</button>
-             <button class="eliminar">Eliminar tasca</button>
-         </div>
-         <div id="task-03" class="task-card"></div>
-         <button class="accordion">Tasca 2</button>
-         <div class="panel">
-         <p>Descripción de la tasca</p>
-             <button class="mover">Mover tasca</button>
-             <button class="editar">Editar tasca</button>
-             <button class="eliminar">Eliminar tasca</button>
-        
-     </div>
-     <div id="task-04" class="task-card"></div>
-         <button class="accordion">Tasca 2</button>
-         <div class="panel">
-         <p>Descripción de la tasca</p>
-             <button class="mover">Mover tasca</button>
-             <button class="editar">Editar tasca</button>
-             <button class="eliminar">Eliminar tasca</button>
-        
-     </div>
-     <div id="task-05" class="task-card"></div>
-         <button class="accordion">Tasca 2</button>
-         <div class="panel">
-         <p>Descripción de la tasca</p>
-             <button class="mover">Mover tasca</button>
-             <button class="editar">Editar tasca</button>
-             <button class="eliminar">Eliminar tasca</button>
-        
-     </div>
- </div>
+    <div class="hamburger"></div>
+    <div class="hamburger"></div>
+    <div class="hamburger"></div>
+    <center>
+        <h1> Todo List</h1>
+    </center>
+
+    <div class="col-container">
+        <div id="todo-column" class="task-column">
+            <div class="column-title">
+                <h3>Todo</h3>
+                <button onclick="NewTask(0)">+</button>
+            </div>
+            <button class="accordion">Tasca 1</button>
+            <div class="panel">
+                <p>Descripción de la tasca</p>
+                <button class="mover">Mover tasca</button>
+                <button class="editar">Editar tasca</button>
+                <button class="eliminar">Eliminar tasca</button>
+            </div>
+            <div id="task-01" class="task-card"></div>
+        </div>
+
+        <div id="doing-column" class="task-column">
+            <div class="column-title">
+                <h3>Doing</h3>
+                <button onclick="NewTask(1)">+</button>
+            </div>
+            <button class="accordion">Tasca 2</button>
+            <div class="panel">
+                <p>Descripción de la tasca</p>
+                <button class="mover">Mover tasca</button>
+                <button class="editar">Editar tasca</button>
+                <button class="eliminar">Eliminar tasca</button>
+            </div>
+            <div id="task-02" class="task-card"></div>
+        </div>
+
+        <div id="done-column" class="task-column">
+            <div class="column-title">
+                <h3>Done</h3>
+                <button onclick="NewTask(2)">+</button>
+            </div>
+            <button class="accordion">Tasca 3</button>
+            <div class="panel">
+                <p>Descripción de la tasca</p>
+                <button class="mover">Mover tasca</button>
+                <button class="editar">Editar tasca</button>
+                <button class="eliminar">Eliminar tasca</button>
+            </div>
+            <div id="task-03" class="task-card"></div>
+            <button class="accordion">Tasca 2</button>
+            <div class="panel">
+                <p>Descripción de la tasca</p>
+                <button class="mover">Mover tasca</button>
+                <button class="editar">Editar tasca</button>
+                <button class="eliminar">Eliminar tasca</button>
+
+            </div>
+            <div id="task-04" class="task-card"></div>
+            <button class="accordion">Tasca 2</button>
+            <div class="panel">
+                <p>Descripción de la tasca</p>
+                <button class="mover">Mover tasca</button>
+                <button class="editar">Editar tasca</button>
+                <button class="eliminar">Eliminar tasca</button>
+
+            </div>
+            <div id="task-05" class="task-card"></div>
+            <button class="accordion">Tasca 2</button>
+            <div class="panel">
+                <p>Descripción de la tasca</p>
+                <button class="mover">Mover tasca</button>
+                <button class="editar">Editar tasca</button>
+                <button class="eliminar">Eliminar tasca</button>
+
+            </div>
+        </div>
 </body>
+
 </html>

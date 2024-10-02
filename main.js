@@ -8,6 +8,7 @@ let tasks = [[32, 55],
              [12],
              [71]]
 
+// TASK FUNCTIONS
 // Moves task to the previous or next column
 function MoveTask(taskId, columnId, direction) {
     // Find the task element and remove it
@@ -20,7 +21,6 @@ function MoveTask(taskId, columnId, direction) {
     Render()
 }
 
-// Helper functions
 function NewTask(taskType) {
     let newId = 0
     let u = 0
@@ -33,18 +33,15 @@ function NewTask(taskType) {
         }
         i++
     }
-    // console.log(todoTask)
-
     Render()
 }
-// NewTask(todoTask)
              
 // Updates task columns HTML, should be called every time "tasks" is modified
 function Render() {
     // Clear columns
-    todoElement.innerHTML  = ""
-    doingElement.innerHTML = ""
-    doneElement.innerHTML  = ""
+    todoElement.innerHTML  = todoElement.getElementsByClassName("column-title")[0].outerHTML
+    doingElement.innerHTML = doingElement.getElementsByClassName("column-title")[0].outerHTML
+    doneElement.innerHTML  = doneElement.getElementsByClassName("column-title")[0].outerHTML
 
     // Add a task card HTML element for every task in "tasks" array
     tasks[0].forEach(task => {
@@ -76,17 +73,18 @@ function Render() {
 }
 Render()
              
-             var acc = document.getElementsByClassName("accordion");
-             var i;
-             
-             for (i = 0; i < acc.length; i++) {
-               acc[i].addEventListener("click", function() {
-                 this.classList.toggle("active");
-                 var panel = this.nextElementSibling;
-                 if (panel.style.display === "block") {
-                   panel.style.display = "none";
-                 } else {
-                   panel.style.display = "block";
-                 }
-               });
-             }
+// Task accordion behaviour
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+        panel.style.display = "none";
+    } else {
+        panel.style.display = "block";
+    }
+    });
+}
