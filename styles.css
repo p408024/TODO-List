@@ -12,7 +12,6 @@
     position: sticky; /* Cambia sticky aquí a relative */
     top: 0;
     background: green;
-    
 }
 
 .task-column h3 {
@@ -22,6 +21,8 @@
     margin: 0;         /* Elimina cualquier margen adicional que empuje el contenido */
     z-index: 1;        /* Asegura que el título esté encima de otros elementos si es necesario */
     padding: 10px;
+    font-family: sans-serif;
+    font-size: 20px;
 }
 
 
@@ -29,6 +30,13 @@
 /* Estilo del div de cada tasca */
 .task-card {
     /* Puedes agregar estilos aquí según lo necesites */
+    
+    
+}
+
+/* Estilo del div del boton de añadir tasca */
+.task-add-btn {
+    
 }
 
 .col-container {
@@ -54,6 +62,27 @@
     outline: none;
     margin: 10px 20px; /* Ajuste del margen */
     transition: 0.4s;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.task-plus {
+
+    color: #444;
+    cursor: pointer;
+    padding: 8px;
+    width: calc(100% - 40px); /* Ajuste del ancho para el margen */
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    margin: 14px 20px; /* Ajuste del margen */
+    transition: 0.4s;
+}
+
+h1 {
+    font-family: sans-serif;
+    font-size: 30px;
+    font-weight: 1000;
 }
 
 h3 {
@@ -61,7 +90,7 @@ h3 {
     color: white;
 }
 
-.active, .accordion:hover {
+.accordion:hover {
     background-color: #ccc;
 }
 
@@ -70,16 +99,20 @@ h3 {
     background-color: white;
     display: none;
     overflow: hidden;
+    transition: 0.4s;
     display: flex; /* Añadido para centrar contenido */
     flex-direction: column; /* Para apilar botones */
    /* align-items: center; /* Centrando elementos */
 }
 
 .panel button {
-    margin: 5px 0; /* Margen entre botones */
+    margin: 5px 0px; /* Margen entre botones */
     width: 100%; /* Botones ocupan el ancho completo del panel */
     text-align: center;
+    transition: 0.4s;
 }
 p{
     text-align: left;
+    font-family: sans-serif;
+    font-size: 12px;
 }
