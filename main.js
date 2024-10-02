@@ -1,5 +1,4 @@
 // HTML References
-
 let todoElement = document.getElementById("todo-column")
 let doingElement = document.getElementById("doing-column")
 let doneElement = document.getElementById("done-column")
@@ -8,10 +7,6 @@ let doneElement = document.getElementById("done-column")
 let tasks = [[32, 55],
              [12],
              [71]]
-
-// let todoTask = [32]
-// let doingTask = [12]
-// let doneTask = [71]
 
 // Moves task to the previous or next column
 function MoveTask(taskId, columnId, direction) {
@@ -26,11 +21,6 @@ function MoveTask(taskId, columnId, direction) {
 }
 
 // Helper functions
-function NewTaskWrapper() {
-    console.log("Test");
-    NewTask(tasks[0])
-}
-
 function NewTask(taskType) {
     let newId = 0
     let u = 0
