@@ -6,8 +6,8 @@ let doneElement = document.getElementById("done-column")
 
 // Global state
 let tasks = [[32, 55, 0],
-             [12, 1],
-             [71, 2]]
+             [2, 3, 12],
+             [71, 1]]
 
 // let todoTask = [32]
 // let doingTask = [12]
@@ -89,3 +89,21 @@ function Render() {
     });
 }
 Render()
+
+function deleteTask(taskId) {
+    if(tasks[0].includes(taskId) == true){
+        let position = tasks[0].indexOf(taskId)
+        tasks[0].splice(position, 1)
+    }
+    if(tasks[1].includes(taskId) == true){
+        let position = tasks[1].indexOf(taskId)
+        tasks[1].splice(position, 1)
+    }
+    if(tasks[2].includes(taskId) == true){
+        let position = tasks[2].indexOf(taskId)
+        tasks[2].splice(position, 1)
+    }
+    Render()
+}
+deleteTask(71)
+console.log(tasks)
