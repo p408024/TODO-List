@@ -4,9 +4,11 @@ let doingElement = document.getElementById("doing-column")
 let doneElement = document.getElementById("done-column")
 
 // Global state
-let tasks = [[32, 55, 0],
-             [2, 3, 12],
-             [71, 1]]
+let tasks = [
+    [{ id: 0, title: "Comprar ous", description: "anar al mercadona i comprar ous XL" }],
+    [{ id: 1, title: "Comprar pomes", description: "pomespomespomespomes"}],
+    [{ id: 2, title: "Netejar cuina (lejía)", description: "cuinacuinacuinacuinacuinacuina" }]
+]
 
 //#region TASK FUNCTIONS
 // Moves task to the previous or next column
