@@ -11,17 +11,28 @@
 
 <body>
     <div>
-        <div class="hamburger"></div>
-        <div class="hamburger"></div>
-        <div class="hamburger"></div>
+        
+<div class="overlay"></div> <!-- Fondo que cubre toda la pantalla -->
+<div class="hamburger-container">
+    <div class="hamburger"></div>
+    <div class="hamburger"></div>
+    <div class="hamburger"></div>
+</div>
+<div class="menu">
+    <ul>
+        <li>Login</li>
+        <li>Settings</li>    </ul></div>
+
+
+        
         <h1
-            style="text-align: center; margin-top: -20px;margin-bottom: 30px; font-family: sans-serif; font-size: 40px; font-weight: 1000;">
+            style="text-align: center; margin-top: 20px;margin-bottom: 20px; font-family: sans-serif; font-size: 40px; font-weight: 1000;">
             To-Do List</h1>
     </div>
 
     <div class="col-container">
         <div id="todo-column" class="task-column">
-            <h3 class="persistent">To-Do column</h3>
+            <h3 class="persistent">Pending</h3>
             <div class="taskbox">
                 <button class="accordion active">Tasca 1</button>
                 <div class="panel" style="display: none;">
@@ -58,7 +69,7 @@
         </div>
 
         <div id="doing-column" class="task-column">
-            <h3  class="persistent">Doing column</h3>
+            <h3  class="persistent">In Progress</h3>
             <div class="taskbox">
                 <button class="accordion active">Tasca 3</button>
                 <div class="panel" style="display: none;">
@@ -82,7 +93,7 @@
         </div>
 
         <div id="done-column" class="task-column">
-            <h3  class="persistent">Done column</h3>
+            <h3  class="persistent">Complete</h3>
 
             <div class="taskbox">
                 <button class="accordion active">Tasca 4</button>

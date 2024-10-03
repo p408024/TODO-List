@@ -233,3 +233,16 @@ function getTaskById(taskId) {
         }            
     }   
 }
+
+const hamburgerContainer = document.querySelector('.hamburger-container');
+const menu = document.querySelector('.menu');
+const overlay = document.querySelector('.overlay');hamburgerContainer.addEventListener('click', () => {
+  hamburgerContainer.classList.toggle('open'); // Añade o quita la clase 'open' al contenedor
+  menu.classList.toggle('open'); // Abre o cierra el menú al hacer clic
+  overlay.classList.toggle('open'); // Muestra u oculta el fondo
+});// Cierra el menú y el fondo al hacer clic en el fondo
+overlay.addEventListener('click', () => {
+  hamburgerContainer.classList.remove('open');
+  menu.classList.remove('open');
+  overlay.classList.remove('open');
+});
