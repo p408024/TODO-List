@@ -115,6 +115,10 @@ function modifyTask(el) {
 function render() {
     // Clear columns
     // FIXME - Buttons get deleted because all elements with "persistent" class should avoid being deleted, not just the first one
+    let todoAddButton = document.getElementsByClassName("task-plus")[0].outerHTML
+    let doingAddButton = document.getElementsByClassName("task-plus")[1].outerHTML
+    let doneAddButton = document.getElementsByClassName("task-plus")[2].outerHTML
+    // console.log(document.getElementsByClassName("task-plus")[0]);
     todoElement.innerHTML = todoElement.getElementsByClassName("persistent")[0].outerHTML
     doingElement.innerHTML = doingElement.getElementsByClassName("persistent")[0].outerHTML
     doneElement.innerHTML = doneElement.getElementsByClassName("persistent")[0].outerHTML
@@ -129,7 +133,7 @@ function render() {
         //     </div>`
         todoElement.innerHTML += `
             <div id=${task.id} class="taskbox">
-                <button class="accordion active">${task.title}</button>
+                <button onclick="accordionToggleVisible(this)" class="accordion active">${task.title}</button>
                 <div class="panel" style="display: none;">
                     <p>${task.description}</p>
                     <div class="btn-container">
@@ -137,18 +141,18 @@ function render() {
                         <button class="btn">🎨</button>
                         <button class="btn">🕒</button>
                         <button class="btn">✏️</button>
-                        <button class="btn">❌</button>
-                        <button class="btn" onClick="moveTask(this, 1)>⏩</button>
+                        <button class="btn" onClick="deleteTask(${task.id})">❌</button>
+                        <button class="btn" onClick="moveTask(this, 1)">⏩</button>
                     </div>
                 </div>
             </div>`
-
     });
+    todoElement.innerHTML += todoAddButton
 
     tasks[1].forEach(task => {
         doingElement.innerHTML += `
             <div id=${task.id} class="taskbox">
-                <button class="accordion active">${task.title}</button>
+                <button onclick="accordionToggleVisible(this)" class="accordion active">${task.title}</button>
                 <div class="panel" style="display: none;">
                     <p>${task.description}</p>
                     <div class="btn-container">
@@ -156,17 +160,18 @@ function render() {
                         <button class="btn">🎨</button>
                         <button class="btn">🕒</button>
                         <button class="btn">✏️</button>
-                        <button class="btn">❌</button>
-                        <button class="btn" onClick="moveTask(this, 1)>⏩</button>
+                        <button class="btn" onClick="deleteTask(${task.id})">❌</button>
+                        <button class="btn" onClick="moveTask(this, 1)">⏩</button>
                     </div>
                 </div>
             </div>`
     });
+    doingElement.innerHTML += doingAddButton
 
     tasks[2].forEach(task => {
         doneElement.innerHTML += `
             <div id=${task.id} class="taskbox">
-                <button class="accordion active">${task.title}</button>
+                <button onclick="accordionToggleVisible(this)" class="accordion active">${task.title}</button>
                 <div class="panel" style="display: none;">
                     <p>${task.description}</p>
                     <div class="btn-container">
@@ -174,53 +179,22 @@ function render() {
                         <button class="btn">🎨</button>
                         <button class="btn">🕒</button>
                         <button class="btn">✏️</button>
-                        <button class="btn">❌</button>
-                        <button class="btn" onClick="moveTask(this, 1)>⏩</button>
+                        <button class="btn" onClick="deleteTask(${task.id})">❌</button>
+                        <button class="btn" onClick="moveTask(this, 1)">⏩</button>
                     </div>
                 </div>
             </div>`
-        doneElement.getElementsByClassName("accordion")[0].addEventListener("click", (e) => {
-            // console.log(e.target);
-            e.target.classList.toggle("active");
-            let panel = e.target.nextElementSibling;
-            console.log(panel);
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        })
     });
+    doneElement.innerHTML += doneAddButton
 }
 render()
-             
-// Task accordion behaviour
-// var acc = document.getElementsByClassName("accordion");
-// var i;
 
-// for (i = 0; i < acc.length; i++) {
-//     acc[i].addEventListener("click", function() {
-//     this.classList.toggle("active");
-//     var panel = this.nextElementSibling;
-//     if (panel.style.display === "block") {
-//         panel.style.display = "none";
-//     } else {
-//         panel.style.display = "block";
-//     }
-//     });
-// }
-
-let acc = document.getElementsByClassName("accordion");
-
-for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
-    });
+function accordionToggleVisible(element) {
+    element.classList.toggle("active");
+    let panel = element.nextElementSibling;
+    if (panel.style.display === "flex") {
+        panel.style.display = "none";
+    } else {
+        panel.style.display = "flex";
+    }
 }
