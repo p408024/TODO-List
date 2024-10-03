@@ -1,36 +1,51 @@
-.hamburger {
-    width: 35px;
-    height: 5px;
-    background-color: black;
-    margin: 6px 0;
+root {
+    --testvar: 0;
+}
+
+body {
+    /*background-image: linear-gradient(to bottom right, lightblue, lightgreen);*/
+    background-image: linear-gradient(to bottom right, rgb(160, 160, 230), rgb(96, 216, 156));
 }
 
 .task-column {
     float: left;
-    width: 33.33%;
+    width: 32.33%;
     min-height: 100vh;
-    position: sticky; /* Cambia sticky aquí a relative */
+    position: sticky;
+    /* Cambia sticky aquí a relative */
     top: 0;
-    background: green;
+    background-image: linear-gradient(to bottom, rgba(100, 100, 100, 0.8), rgba(255, 255, 255, 0.2));
     border-radius: 10px;
+    margin-right: 1%;
 }
 
 .task-column:hover {
     border-radius: 16px;
     transition: 0.4;
-    background: rgba(0, 128, 0, 0.755);
+    background-image: linear-gradient(to bottom, gray, rgba(0, 255, 70, 0.3));
 }
 
 .task-column h3 {
-    position: sticky; /* Esto hará que el título se quede fijo al hacer scroll */
-    top: 0;           /* Define que el título se pegue al borde superior de la columna */
-    background: green; /* Mantiene el fondo verde detrás del título */
-    margin: 0;         /* Elimina cualquier margen adicional que empuje el contenido */
-    z-index: 1;        /* Asegura que el título esté encima de otros elementos si es necesario */
+    position: sticky;
+    /* Esto hará que el título se quede fijo al hacer scroll */
+    top: 0;
+    /* Define que el título se pegue al borde superior de la columna */
+    background: rgba(200, 200, 200, 0.8);
+    /* Mantiene el fondo verde detrás del título */
+    margin: 0;
+    /* Elimina cualquier margen adicional que empuje el contenido */
+    margin-bottom: 8px;
+    z-index: 1;
+    /* Asegura que el título esté encima de otros elementos si es necesario */
     padding: 10px;
     font-family: sans-serif;
     font-size: 20px;
     border-radius: 4px;
+    border: 1.5px dashed rgb(0, 0, 80, 1);
+    box-shadow: 0px 4px 2px rgba(70, 60, 255, 0.2), 0px -2px 2px rgba(70, 60, 255, 0.2);
+
+
+
 }
 
 .column-title {
@@ -40,17 +55,15 @@
     align-items: center;
 }
 
-.column-title button{
+.column-title button {
     margin: .5rem;
     width: 90%;
-}
 
 }
 
 .col-container {
-    background: rgb(13, 0, 255);
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 /* Clear floats after the columns */
@@ -61,37 +74,43 @@
 }
 
 .accordion {
-    background-color: #eee;
+    background-color: rgba(255, 255, 255, 0.8);
     color: #444;
     cursor: pointer;
     padding: 18px;
-    width: calc(100% - 40px); /* Ajuste del ancho para el margen */
+    width: calc(100% - 40px);
+    /* Ajuste del ancho para el margen */
     border: none;
     outline: none;
-    margin: 10px 20px; /* Ajuste del margen */
+    margin: 10px 20px;
+    /* Ajuste del margen */
     font-family: sans-serif;
     font-size: 16px;
     font-weight: 600;
     border-radius: 6px;
+    border: inset 1.5px black;
+    text-shadow: 0px -1px 0px rgb(255, 255, 255);
 }
 
 .accordion:hover {
     border-radius: 10px;
     transition: 0.1s;
-    border: inset 0.5px black;
-    background-color: #ccc;
-    margin-top: 9px;
+    border: inset 1.5px white;
+    background-color: rgba(255, 255, 255, 0.95);
+
 }
 
 .task-plus {
     color: #444;
     cursor: pointer;
     padding: 8px;
-    width: calc(100% - 40px); /* Ajuste del ancho para el margen */
+    width: calc(100% - 40px);
+    /* Ajuste del ancho para el margen */
     border-radius: 12px;
     border: none;
     outline: none;
-    margin: 14px 20px; /* Ajuste del margen */
+    margin: 14px 20px;
+    /* Ajuste del margen */
     border: inset 1px black;
 }
 
@@ -101,9 +120,22 @@
     transition: 0.1s;
 }
 
+h1 {
+    text-shadow: 0px -4px 0px rgb(170, 220, 100), 0px -3px 2px rgb(0, 75, 0);
+    color: rgb(0, 0, 50);
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 30px;
+    font-family: sans-serif;
+    font-size: 40px;
+    font-weight: 1000;
+}
+
 h3 {
     text-align: center;
-    color: white;
+    color: rgb(0, 0, 70);
+    text-shadow: 0px -1.5px 0px rgb(100, 220, 190, 0.8), 0px -0.75px 2px rgb(0, 20, 75);
+
 }
 
 .panel {
@@ -111,22 +143,30 @@ h3 {
     display: none;
     overflow: hidden;
     transition: 0.4s;
-    display: flex; /* Añadido para centrar contenido */
-    flex-direction: column; /* Para apilar botones */
-   /* align-items: center; /* Centrando elementos */
+    display: flex;
+    /* Añadido para centrar contenido */
+    flex-direction: column;
+    /* Para apilar botones */
+    /* align-items: center; /* Centrando elementos */
 }
 
 /* Estilo del div de cada tasca */
 .taskbox {
-    background-color: rgba(208, 255, 0, 0.5); /* Esto deberia ir a una ID unica para cada caja de tasca, para la funcionalidad de asignar colores a las tascas*/
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Esto deberia ir a una ID unica para cada caja de tasca, para la funcionalidad de asignar colores a las tascas*/
     border-radius: 6px;
     margin-bottom: 5px;
     margin-left: 2px;
     margin-right: 2px;
+    border: dashed 1px rgb(200, 250, 200, 0.7);
 }
 
+.taskbox:hover {
+    border: dashed 1px rgb(220, 250, 220, 1);
+    transition: 0.2s;
+}
 
-.btn-container{
+.btn-container {
     display: table;
     align-items: center;
     width: 100%;
@@ -134,23 +174,198 @@ h3 {
 
 .btn {
     display: table-row;
-    width: calc((100% / 6) - 2px);
-    margin: 5px 1px; /* Margen entre botones */
+    width: calc((100% / 5) - 1px);
+    margin: 5px 0.5px;
+    /* Margen entre botones */
     text-align: center;
     background-color: whitesmoke;
     opacity: 0.8;
     border-radius: 4px;
+    font-size: 12px;
+    border: outset 2px black;
+    height: 24px;
+
 }
 
 .btn:hover {
     cursor: pointer;
-    opacity: 1;
+    opacity: 0.95;
     border-radius: 7px;
-    transition: 0.4s;
+    transition: 0.2s;
+    border: outset 2px white;
+
 }
 
-p{
+p {
     text-align: left;
     font-family: sans-serif;
     font-size: 12px;
+    text-shadow: 0px -1.5px 0px rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 18px;
+    text-shadow: 0px -1px 0px rgba(255, 255, 255, 0.2);
+    word-wrap: break-word;
+}
+
+.hamburger {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+}
+
+.overlay {
+    display: none;
+    /* Oculta el fondo por defecto */
+    position: fixed;
+    /* Fijo para cubrir toda la pantalla */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    /* Fondo oscuro semi-transparente */
+    z-index: 998;
+    /* Asegura que esté detrás del menú */
+}
+
+.hamburger-container {
+    cursor: pointer;
+    position: absolute;
+    top: 2%;
+    left: 3%;
+    z-index: 1000;
+    /* Asegura que el contenedor esté por encima */
+}
+
+.hamburger {
+    width: 35px;
+    height: 5px;
+    background: rgb(0, 0, 70);
+    margin: 6px 0;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    /* Animación suave */
+}
+
+.menu {
+    display: none;
+    /* Oculta el menú por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 150px;
+    width: 150px;
+    /* background: rgba(222, 219, 219, 0.877); /* Fondo blanco semitransparente */
+    background-image: linear-gradient(to bottom, rgb(130, 150, 130, 0.9) 75%, rgba(0, 255, 70, 0.00));
+    padding: 60px 10px;
+    color: black;
+    /* Cambia el color del texto a negro */
+    z-index: 999;
+    /* Asegura que el menú esté por debajo del contenedor */
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: rgb(0, 0, 70);
+    border-radius: 7px;
+}
+
+.menu.open {
+    display: block;
+    /* Muestra el menú cuando está abierto */
+}
+
+.overlay.open {
+    display: block;
+    /* Muestra el fondo cuando el menú está abierto */
+}
+
+/* Animaciones del menú hamburguesa */
+.hamburger-container.open .hamburger:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+    position: fixed;
+
+}
+
+.hamburger-container.open .hamburger:nth-child(2) {
+    opacity: 0;
+    /* Oculta la segunda línea */
+
+}
+
+.hamburger-container.open .hamburger:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+    position: fixed;
+}
+
+/* Estilo de los ítems del menú */
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu ul li {
+    padding: 15px;
+    border-bottom: 1px solid black;
+    /* Cambia el color del borde a negro */
+}
+
+.menu ul li:hover {
+    background-color: #9cd7727e;
+    /* Cambia el color de fondo al pasar el ratón */
+    border-radius: 4px;
+}
+
+#modification-popup {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    top: 0%;
+    justify-content: center;
+    align-items: center;
+    left: 0%;
+}
+
+.pop-up {
+    width: 30%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2% 3% 4% 3%;
+    justify-content: center;
+    height: 35%;
+    background-color: white;
+    border: 4px solid black;
+    border-radius: 20px;
+}
+
+.w85 {
+    width: 85%;
+}
+
+#modification-button {
+    margin-top: 1rem;
+    font-size: 15px;
+    height: 20%;
+}
+
+.titleDesc {
+    width: 100%;
+    margin: 0;
+    font-size: 15px;
+}
+
+.textEditarTasca {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.none {
+    display: none;
 }
