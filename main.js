@@ -137,8 +137,8 @@ function render() {
                         <button class="btn">🎨</button>
                         <button class="btn">🕒</button>
                         <button class="btn">✏️</button>
-                        <button class="btn">❌</button>
-                        <button class="btn" onClick="moveTask(this, 1)>⏩</button>
+                        <button class="btn" onClick="deleteTask(${task.id})">❌</button>
+                        <button class="btn" onClick="moveTask(this, 1)">⏩</button>
                     </div>
                 </div>
             </div>`
@@ -156,8 +156,8 @@ function render() {
                         <button class="btn">🎨</button>
                         <button class="btn">🕒</button>
                         <button class="btn">✏️</button>
-                        <button class="btn">❌</button>
-                        <button class="btn" onClick="moveTask(this, 1)>⏩</button>
+                        <button class="btn" onClick="deleteTask(${task.id})">❌</button>
+                        <button class="btn" onClick="moveTask(this, 1)">⏩</button>
                     </div>
                 </div>
             </div>`
@@ -174,8 +174,8 @@ function render() {
                         <button class="btn">🎨</button>
                         <button class="btn">🕒</button>
                         <button class="btn">✏️</button>
-                        <button class="btn">❌</button>
-                        <button class="btn" onClick="moveTask(this, 1)>⏩</button>
+                        <button class="btn" onClick="deleteTask(${task.id})">❌</button>
+                        <button class="btn" onClick="moveTask(this, 1)">⏩</button>
                     </div>
                 </div>
             </div>`
