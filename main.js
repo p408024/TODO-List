@@ -1,7 +1,12 @@
 // HTML References
-let todoElement = document.getElementById("todo-column")
+let todoElement  = document.getElementById("todo-column")
 let doingElement = document.getElementById("doing-column")
-let doneElement = document.getElementById("done-column")
+let doneElement  = document.getElementById("done-column")
+
+let modPopup       = document.getElementById("modification-popup")
+let editTitleInput = document.getElementById("title-input")
+let editDescInput  = document.getElementById("description-input")
+let editButton     = document.getElementById("modification-button")
 
 // Global state
 let tasks = [
@@ -10,7 +15,52 @@ let tasks = [
     [{ id: 63, title: "Netejar cuina (lejía)", description: "cuinacuinacuinacuinacuinacuina" }]
 ]
 
-//#region TASK FUNCTIONS
+//#region TASK DATA FUNCTIONS
+function modifyTask(newTaskData) {
+    for (let j = 0; j < tasks.length; j++) {
+        for (let i = 0; i < tasks[j].length; i++) {
+            if (tasks[j][i].id == newTaskData.id) {
+                tasks[j][i] = newTaskData
+            }
+        }            
+    }
+
+    // Update
+    render()
+    toggleModifyPopup()
+}
+
+function newTask(columnId) {
+    let columnToAdd = tasks[columnId]
+    // Create new task data (id)
+    let allId = []
+    for (let i = 0; i < tasks[0].length; i++) {
+        allId.push(tasks[0][i].id)
+    }
+    for (let i = 0; i < tasks[1].length; i++) {
+        allId.push(tasks[1][i].id)
+    }
+    for (let i = 0; i < tasks[2].length; i++) {
+        allId.push(tasks[2][i].id)
+    }
+    console.log(allId)
+    let newId = 0
+    let u = 0
+    let x = 0
+    while (u == 0) {
+        if (allId.includes(x) == false) {
+            newId = x
+            // console.log(newId)
+            columnToAdd.push({id: newId, title: "La teva tasca", description: "Descripció"})
+            u = 1
+            // console.log(columnToAdd)
+        }
+        x++
+    }
+    render()
+    toggleModifyPopup(document.getElementById(newId))
+}
+
 // Moves task to the previous or next column, direction is -1 for left and 1 for right
 function moveTask(el, direction) {
     // Find task and column ids
@@ -42,44 +92,6 @@ function moveTask(el, direction) {
 }
 // TODO - Update function to drag behaviour ^^^^^^
 
-function newTask(columnId) {
-    let columnToAdd = tasks[columnId]
-    // Create new task data (id)
-    let allId = []
-    for (let i = 0; i < tasks[0].length; i++) {
-        allId.push(tasks[0][i].id)
-    }
-    for (let i = 0; i < tasks[1].length; i++) {
-        allId.push(tasks[1][i].id)
-    }
-    for (let i = 0; i < tasks[2].length; i++) {
-        allId.push(tasks[2][i].id)
-    }
-    // console.log(allId)
-    let newId = 0
-    let u = 0
-    let x = 52
-    while (u == 0) {
-        if (allId.includes(x) == false) {
-            newId = x
-            // console.log(newId)
-            columnToAdd.push({id: newId, title: "Hola", description: "aloh"})
-            u = 1
-            // console.log(columnToAdd)
-        }
-        x++
-        // if(columnToAdd[0].id == false && columnToAdd[0].id.includes(i) == false && columnToAdd[0].id.includes(i) == false){
-        // newId = i
-        // columnToAdd.push(newId)
-        // console.log(columnToAdd)
-        // u = 1
-        //}
-        //i++
-    }
-
-    render()
-}
-
 function deleteTask(taskId) {
     for (let i = 0; i < tasks.length; i++) {
         for (let j = 0; j < tasks[i].length; j++) {
@@ -89,28 +101,9 @@ function deleteTask(taskId) {
     }
     render()
 }
-
-// TODO - Finish the behaviour when the popup html is merged 
-function modifyTask(el) {
-    // HTML References
-    let taskElement   = el.parentElement.parentElement
-    let titleEl       = taskElement.getElementsByClassName("task-title")[0]
-    let descriptionEl = taskElement.getElementsByClassName("task-description")[0]
-        
-    // Find column and task id
-    let columnId = el.parentElement.parentElement.parentElement.id
-    let taskId = taskElement.id
-
-
-    // VVVV Discarded, modification will be done with div popup VVVV
-    // Update html (this function doesn't call the render function and handles the DOM update by itself)
-    // titleEl.innerHTML       = tasks[columnId][taskId].id
-    // descriptionEl.innerHTML = tasks[columnId][taskId].description
-
-    // Change task card state to "input" version, hiding/showing buttons, text and input fields
-}
 //#endregion
 
+//#region DOM HTML functions
 // Updates task columns HTML, should be called every time "tasks" is modified
 function render() {
     // Clear columns
@@ -140,7 +133,9 @@ function render() {
                         <button class="btn" onClick="moveTask(this, -1)">⏪</button>
                         <button class="btn">🎨</button>
                         <button class="btn">🕒</button>
-                        <button class="btn">✏️</button>
+                        <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement)">
+                            ✏️
+                        </button>
                         <button class="btn" onClick="deleteTask(${task.id})">❌</button>
                         <button class="btn" onClick="moveTask(this, 1)">⏩</button>
                     </div>
@@ -159,7 +154,9 @@ function render() {
                         <button class="btn" onClick="moveTask(this, -1)">⏪</button>
                         <button class="btn">🎨</button>
                         <button class="btn">🕒</button>
-                        <button class="btn">✏️</button>
+                        <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement)">
+                            ✏️
+                        </button>
                         <button class="btn" onClick="deleteTask(${task.id})">❌</button>
                         <button class="btn" onClick="moveTask(this, 1)">⏩</button>
                     </div>
@@ -178,7 +175,9 @@ function render() {
                         <button class="btn" onClick="moveTask(this, -1)">⏪</button>
                         <button class="btn">🎨</button>
                         <button class="btn">🕒</button>
-                        <button class="btn">✏️</button>
+                        <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement)">
+                            ✏️
+                        </button>
                         <button class="btn" onClick="deleteTask(${task.id})">❌</button>
                         <button class="btn" onClick="moveTask(this, 1)">⏩</button>
                     </div>
@@ -189,6 +188,29 @@ function render() {
 }
 render()
 
+function toggleModifyPopup(taskElement) {
+    console.log(taskElement);
+
+    // If we are enabling the popup
+    if (modPopup.style.display != "flex") {        
+        let taskId = taskElement.id
+        let task = getTaskById(taskId)
+
+        editTitleInput.value = task.title
+        editDescInput.value  = task.description
+
+        modPopup.style.display = "flex"
+        editButton.onclick = () => modifyTask({
+            id: parseInt(taskId),
+            title: editTitleInput.value,
+            description: editDescInput.value
+        })
+
+    } else {
+        modPopup.style.display = "none"
+    }
+}
+
 function accordionToggleVisible(element) {
     element.classList.toggle("active");
     let panel = element.nextElementSibling;
@@ -197,4 +219,17 @@ function accordionToggleVisible(element) {
     } else {
         panel.style.display = "flex";
     }
+}
+
+//#endregion
+
+// Helper functions
+function getTaskById(taskId) {
+    for (let j = 0; j < tasks.length; j++) {
+        for (let i = 0; i < tasks[j].length; i++) {
+            if (tasks[j][i].id == taskId) {
+                return tasks[j][i]
+            }
+        }            
+    }   
 }
