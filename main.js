@@ -14,9 +14,9 @@ let tasks = [
 // Moves task to the previous or next column, direction is -1 for left and 1 for right
 function moveTask(el, direction) {
     // Find task and column ids
-    let taskId = el.parentElement.id
+    let taskId = el.parentElement.parentElement.parentElement.id
     let columnId = 0
-    switch (el.parentElement.parentElement.id) {
+    switch (el.parentElement.parentElement.parentElement.parentElement.id) {
         case "todo-column": columnId = 0; break;
         case "doing-column": columnId = 1; break;
         case "done-column": columnId = 2; break;
