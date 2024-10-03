@@ -168,6 +168,18 @@
             <button onclick="newTask(2)" class="task-plus">+</button>
 
         </div>
+
+        <div id="modification-popup" style="position: absolute; left: 30%; top: 30%; width: 40%; height: 40%; background-color: white; display: none; flex-direction: column; justify-content: center; align-items: center;">
+            <div style="width: 50%;">
+                <p>Title</p>            
+                <input id="title-input" style="width: 100%; margin: 0;" type="text">
+            </div>
+            <div style="width: 50%;">
+                <p>Description</p>            
+                <textarea id="description-input" style="width: 100%; margin: 0;"></textarea>
+            </div>
+            <button id="modification-button" onclick="modifyTask()" style="margin-top: 1rem; width: 50%;">ACCEPT</button>
+        </div>
 </body>
 
 </html>
