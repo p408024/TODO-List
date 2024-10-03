@@ -35,7 +35,7 @@
             <h3 class="persistent">Pending</h3>
             <div class="taskbox">
                 <button class="accordion active">Tasca 1</button>
-                <div class="panel" style="display: none;">
+                <div class="panel none">
                     <p>Descripción de la tasca</p>
                     <div class="btn-container">
                         <button class="btn">⏪</button>
@@ -50,7 +50,7 @@
 
             <div class="taskbox">
                 <button class="accordion active">Tasca 2</button>
-                <div class="panel" style="display: none;">
+                <div class="panel none">
                     <p>Descripción de la tasca</p>
                     <div class="btn-container">
                         <button class="btn">⏪</button>
@@ -72,7 +72,7 @@
             <h3  class="persistent">In Progress</h3>
             <div class="taskbox">
                 <button class="accordion active">Tasca 3</button>
-                <div class="panel" style="display: none;">
+                <div class="panel none">
                     <p>Descripción de la tasca</p>
                     <div class="btn-container">
                         <button class="btn">⏪</button>
@@ -93,11 +93,11 @@
         </div>
 
         <div id="done-column" class="task-column">
-            <h3  class="persistent">Complete</h3>
+            <h3 class="persistent">Complete</h3>
 
             <div class="taskbox">
                 <button class="accordion active">Tasca 4</button>
-                <div class="panel" style="display: none;">
+                <div class="panel none">
                     <p>Descripción de la tasca</p>
                     <div class="btn-container">
                         <button class="btn">⏪</button>
@@ -114,7 +114,7 @@
 
             <div class="taskbox">
                 <button class="accordion active">Tasca 5</button>
-                <div class="panel" style="display: none;">
+                <div class="panel none">
                     <p>Descripción de la tasca</p>
                     <div class="btn-container">
                         <button class="btn">⏪</button>
@@ -131,7 +131,7 @@
 
             <div class="taskbox">
                 <button class="accordion active">Tasca 6</button>
-                <div class="panel" style="display: none;">
+                <div class="panel none">
                     <p>Descripción de la tasca</p>
                     <div class="btn-container">
                         <button class="btn">⏪</button>
@@ -148,7 +148,7 @@
 
             <div class="taskbox">
                 <button class="accordion active">Tasca 7</button>
-                <div class="panel" style="display: none;">
+                <div class="panel none">
                     <p>Descripción de la tasca</p>
                     <div class="btn-container">
                         <button class="btn">⏪</button>
@@ -163,7 +163,7 @@
 
             <div class="taskbox">
                 <button class="accordion active">Tasca 8</button>
-                <div class="panel" style="display: none;">
+                <div class="panel none">
                     <p>Descripción de la tasca</p>
                     <div class="btn-container">
                         <button class="btn">⏪</button>
@@ -179,17 +179,21 @@
             <button onclick="newTask(2)" class="task-plus">+</button>
 
         </div>
-
-        <div id="modification-popup" style="position: absolute; left: 30%; top: 30%; width: 40%; height: 40%; background-color: white; display: none; flex-direction: column; justify-content: center; align-items: center;">
-            <div style="width: 50%;">
-                <p>Title</p>            
-                <input id="title-input" style="width: 100%; margin: 0;" type="text">
+        <div id="modification-popup">
+            <div class="pop-up">
+                <div class="w85">
+                    <p class="textEditarTasca">Edit task</p>
+                </div>
+                <div class="w85">
+                    <p>Title</p>
+                    <input id="title-input" class="titleDesc" type="text">
+                </div>
+                <div class="w85">
+                    <p>Description</p>
+                    <textarea id="description-input" class="titleDesc"></textarea>
+                </div>
+                <button id="modification-button" onclick="modifyTask()" class="w85">ACCEPT</button>
             </div>
-            <div style="width: 50%;">
-                <p>Description</p>            
-                <textarea id="description-input" style="width: 100%; margin: 0;"></textarea>
-            </div>
-            <button id="modification-button" onclick="modifyTask()" style="margin-top: 1rem; width: 50%;">ACCEPT</button>
         </div>
 </body>
 
