@@ -58,7 +58,7 @@
         </div>
 
         <div id="doing-column" class="task-column">
-            <h3  class="persistent">Doing column</h3>
+            <h3 class="persistent">Doing column</h3>
             <div class="taskbox">
                 <button class="accordion active">Tasca 3</button>
                 <div class="panel" style="display: none;">
@@ -82,7 +82,7 @@
         </div>
 
         <div id="done-column" class="task-column">
-            <h3  class="persistent">Done column</h3>
+            <h3 class="persistent">Done column</h3>
 
             <div class="taskbox">
                 <button class="accordion active">Tasca 4</button>
@@ -168,17 +168,48 @@
             <button onclick="newTask(2)" class="task-plus">+</button>
 
         </div>
-
-        <div id="modification-popup" style="position: absolute; left: 30%; top: 30%; width: 40%; height: 40%; background-color: white; display: none; flex-direction: column; justify-content: center; align-items: center;">
-            <div style="width: 50%;">
-                <p>Title</p>            
-                <input id="title-input" style="width: 100%; margin: 0;" type="text">
+        <!-- <div style="    pointer-events: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        margin-right: 100%;
+        margin-top: 70%;"></div> -->
+        <div id="modification-popup" style="position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            top: 0%;
+            justify-content: center;
+            align-items: center;
+            left: 0%;">
+            <div style="width: 30%;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2% 3% 4% 3%;
+            justify-content: center;
+            height: 35%;
+            background-color: white;
+            border: 4px solid black;
+    border-radius: 20px;">
+                <div style="width: 85%;">
+                    <p style="text-align: center; text-transform: uppercase; font-size: 25px;
+    font-weight: bold;">Editar tasca</p>
+                </div>
+                <div style="width: 85%;">
+                    <p>Title</p>
+                    <input id="title-input" style="width: 100%; margin: 0; font-size: 15px;" type="text">
+                </div>
+                <div style="width: 85%;">
+                    <p>Description</p>
+                    <textarea id="description-input" style="width: 100%; margin: 0; font-size: 15px;"></textarea>
+                </div>
+                <button id="modification-button" onclick="modifyTask()"
+                    style="margin-top: 1rem; width: 86%; font-size: 15px; height: 20%;">ACCEPT</button>
             </div>
-            <div style="width: 50%;">
-                <p>Description</p>            
-                <textarea id="description-input" style="width: 100%; margin: 0;"></textarea>
-            </div>
-            <button id="modification-button" onclick="modifyTask()" style="margin-top: 1rem; width: 50%;">ACCEPT</button>
         </div>
 </body>
 
