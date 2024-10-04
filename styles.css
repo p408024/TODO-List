@@ -381,3 +381,7 @@ h3 {
 .none {
     display: none;
 }
+
+.black {
+    color: black;
+}
