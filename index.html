@@ -11,8 +11,7 @@
 
 <body>
     <div>
-
-        <div class="overlay"></div> <!-- Fondo que cubre toda la pantalla -->
+        <div class="overlay"></div>
         <div class="hamburger-container">
             <div class="hamburger"></div>
             <div class="hamburger"></div>
@@ -26,7 +25,6 @@
         </div>
         <h1>To-Do List</h1>
     </div>
-
     <div class="col-container">
         <div id="todo-column" class="task-column">
             <h3 class="persistent">Pending</h3>
@@ -44,7 +42,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="taskbox">
                 <button class="accordion active">Tasca 2</button>
                 <div class="panel none">
@@ -59,12 +56,10 @@
                     </div>
                 </div>
             </div>
-
             <div id="task-01" class="task-add-btn"></div>
             <div id="todo-add" class="task-card"></div>
             <button onclick="newTask(0)" class="task-plus">+</button>
         </div>
-
         <div id="doing-column" class="task-column">
             <h3 class="persistent">In Progress</h3>
             <div class="taskbox">
@@ -81,17 +76,13 @@
                     </div>
                 </div>
             </div>
-
             <div id="task-02" class="task-card"></div>
-
             <div id="task-01" class="task-add-btn"></div>
             <div id="todo-add" class="task-card"></div>
             <button onclick="newTask(1)" class="task-plus">+</button>
         </div>
-
         <div id="done-column" class="task-column">
             <h3 class="persistent">Complete</h3>
-
             <div class="taskbox">
                 <button class="accordion active">Tasca 4</button>
                 <div class="panel none">
@@ -106,9 +97,7 @@
                     </div>
                 </div>
             </div>
-
             <div id="task-03" class="task-card"></div>
-
             <div class="taskbox">
                 <button class="accordion active">Tasca 5</button>
                 <div class="panel none">
@@ -123,9 +112,7 @@
                     </div>
                 </div>
             </div>
-
             <div id="task-04" class="task-card"></div>
-
             <div class="taskbox">
                 <button class="accordion active">Tasca 6</button>
                 <div class="panel none">
@@ -140,9 +127,7 @@
                     </div>
                 </div>
             </div>
-
             <div id="task-05" class="task-card"></div>
-
             <div class="taskbox">
                 <button class="accordion active">Tasca 7</button>
                 <div class="panel none">
@@ -157,7 +142,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="taskbox">
                 <button class="accordion active">Tasca 8</button>
                 <div class="panel none">
@@ -172,14 +156,13 @@
                     </div>
                 </div>
             </div>
-
             <button onclick="newTask(2)" class="task-plus">+</button>
-
         </div>
         <div id="modification-popup">
+            <div id="no-click-zone"></div>
             <div class="pop-up">
                 <div class="w85">
-                    <p class="black" id="modification-title">Edit task</p>
+                    <p id="modification-title">Edit task</p>
                 </div>
                 <div class="w85">
                     <p class="edit-p">Title</p>
@@ -188,6 +171,18 @@
                 <div class="w85">
                     <p class="edit-p">Description</p>
                     <textarea id="description-input" class="titleDesc"></textarea>
+                </div>
+                <div class="w85 divColors">
+                    <p class="edit-p chooseColor">Choose a color: </p>
+                    <select name="colors" id="color-input">
+                        <option value="green">&#128994</option>
+                        <option value="red">&#128308</option>
+                        <option value="yellow">&#128993</option>
+                        <option value="blue">&#128309</option>
+                        <option value="black">&#9899</option>
+                        <option value="white">&#9898</option>
+                        <option value="unmarked">None</option>
+                    </select>
                 </div>
                 <div class="w85 modiCanc">
                     <button id="modification-button" onclick="modifyTask()">Accept</button>

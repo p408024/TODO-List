@@ -9,6 +9,7 @@ let editDescInput  = document.getElementById("description-input")
 let editButton     = document.getElementById("modification-button")
 let editTitleText  = document.getElementById("modification-title")
 let cancelButton   = document.getElementById("cancel-button")
+let editColorInput  = document.getElementById("color-input")
 
 // Global state
 let tasks = [[], [], []
@@ -55,7 +56,7 @@ function newTask(columnId) {
         if (allId.includes(x) == false) {
             newId = x
             // console.log(newId)
-            columnToAdd.push({id: newId, title: "La teva tasca", description: "Descripció"})
+            columnToAdd.push({id: newId, title: "La teva tasca", description: "Descripció", marked: "unmarked"})
             u = 1
             // console.log(columnToAdd)
         }
@@ -141,7 +142,7 @@ function render(creatingTask) {
         //     </div>`
         
         todoElement.innerHTML += `
-            <div id=${task.id} class="taskbox">
+            <div id=${task.id} class="taskbox ${ task.marked!="unmarked" ? task.marked : ''}">
                 <button onclick="accordionToggleVisible(this)" class="accordion ${ !isAccordionOpenList[0][task.id] || creatingTask ? "" : "active"}">
                     ${task.title}
                 </button>
@@ -149,7 +150,7 @@ function render(creatingTask) {
                     <p>${task.description}</p>
                     <div class="btn-container">
                         <button class="btn" onClick="moveTask(this, -1)">⏪</button>
-                        <button class="btn">⬆️</button>
+                        <button class="btn" onClick="sortTask(this.parentElement.parentElement.parentElement.id)">⬆️</button>
                         <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement, 'edit')">
                             ✏️
                         </button>
@@ -163,7 +164,7 @@ function render(creatingTask) {
 
     tasks[1].forEach((task, i) => {
         doingElement.innerHTML += `
-            <div id=${task.id} class="taskbox">
+            <div id=${task.id} class="taskbox ${ task.marked!="unmarked" ? task.marked : ''}">
                 <button onclick="accordionToggleVisible(this)" class="accordion ${ !isAccordionOpenList[1][task.id] || creatingTask ? "" : "active"}">
                     ${task.title}
                 </button>
@@ -171,7 +172,7 @@ function render(creatingTask) {
                     <p>${task.description}</p>
                     <div class="btn-container">
                         <button class="btn" onClick="moveTask(this, -1)">⏪</button>
-                        <button class="btn">⬆️</button>
+                        <button class="btn" onClick="sortTask(this.parentElement.parentElement.parentElement.id)">⬆️</button>
                         <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement, 'edit')">
                             ✏️
                         </button>
@@ -185,7 +186,7 @@ function render(creatingTask) {
 
     tasks[2].forEach((task, i) => {
         doneElement.innerHTML += `
-            <div id=${task.id} class="taskbox">
+            <div id=${task.id} class="taskbox ${ task.marked!="unmarked" ? task.marked : ''}">
                 <button onclick="accordionToggleVisible(this)" class="accordion ${ !isAccordionOpenList[2][task.id] || creatingTask ? "" : "active"}">
                     ${task.title}
                 </button>
@@ -193,7 +194,7 @@ function render(creatingTask) {
                     <p>${task.description}</p>
                     <div class="btn-container">
                         <button class="btn" onClick="moveTask(this, -1)">⏪</button>
-                        <button class="btn">⬆️</button>
+                        <button class="btn" onClick="sortTask(this.parentElement.parentElement.parentElement.id)">⬆️</button>
                         <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement, 'edit')">
                             ✏️
                         </button>
@@ -212,8 +213,10 @@ render()
 function toggleModifyPopup(taskElement, mode) {
     if (mode == "create") {
         cancelButton.style.display = "none"
+        editTitleText.innerText = "New Task"
     } else if (mode == "edit") {
         cancelButton.style.display = "block"
+        editTitleText.innerText = "Edit Task"
     } else {
         console.log("ERROR: Invalid modify popup mode");
         return
@@ -226,18 +229,19 @@ function toggleModifyPopup(taskElement, mode) {
 
         editTitleInput.value = task.title
         editDescInput.value  = task.description
+        editColorInput.value = task.marked
 
         modPopup.style.display = "flex"
         editButton.onclick = () => modifyTask({
             id: parseInt(taskId),
             title: editTitleInput.value,
-            description: editDescInput.value
+            description: editDescInput.value,
+            marked: editColorInput.value
         })
     } else {
         modPopup.style.display = "none"
     }
 }
-
 function accordionToggleVisible(element) {
     element.classList.toggle("active");
     let panel = element.nextElementSibling;
@@ -273,3 +277,39 @@ overlay.addEventListener('click', () => {
   menu.classList.remove('open');
   overlay.classList.remove('open');
 });
+
+//funció per moure elements al top d'una columna
+function sortTask(taskId){
+    for (let i = 0; i < 3; i++){
+        for (let j = 0; j < tasks[i].length; j++) {
+            //console.log()
+            if(tasks[i][j].id==taskId){
+                tasks[i].unshift(tasks[i][j])
+                tasks[i].splice(j+1, 1)
+            }
+        }      
+    }
+    render()
+}
+
+//funció per marcar tasques de color vermell
+function markTask(taskId, color){
+    for (let i = 0; i < 3; i++){
+        for (let j = 0; j < tasks[i].length; j++){
+            if(tasks[i][j].id==taskId){
+                tasks[i][j].marked = color
+                //console.log("primer " + tasks[i][j].id)
+            }
+        }
+    }
+    render()
+}
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+//sortTask(70)
+// markTask(53, "red")
+// markTask(70, "green")
+// markTask(63, "yellow")
+// markTask(20, "white")
+// markTask(50, "blue")
