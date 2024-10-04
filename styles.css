@@ -145,7 +145,7 @@ h3 {
 
 /* Estilo del div de cada tasca */
 .taskbox {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
     /* Esto deberia ir a una ID unica para cada caja de tasca, para la funcionalidad de asignar colores a las tascas*/
     border-radius: 6px;
     margin-bottom: 5px;
@@ -159,22 +159,22 @@ h3 {
     transition: 0.2s;
 }
 .black{
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 .red{
-    background-color: rgba(255, 0, 0, 0.5);
+    background-color: rgba(255, 0, 0, 0.6);
 }
 .yellow{
-    background-color: rgba(255, 255, 0, 0.5);
+    background-color: rgba(255, 255, 0, 0.6);
 }
 .green{
-    background-color: rgba(0, 128, 0, 0.5);
+    background-color: rgba(0, 128, 0, 0.6);
 }
 .blue{
-    background-color: rgba(0, 0, 255, 0.5);
+    background-color: rgba(0, 0, 255, 0.6);
 }
 .white{
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 .btn-container {
@@ -345,14 +345,14 @@ h3 {
 
 .pop-up {
     width: 40%;
-    max-width: 300px;
+    max-width: 360px;
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2% 3% 4% 3%;
     justify-content: center;
-    background-image: linear-gradient(to bottom, rgba(120, 120, 190, 0.95), rgba(90, 145, 170, 0.85));
+    background-color: rgba(120, 120, 190, 0.95);
     border: 2px dotted rgb(0, 0, 70);
     border-radius: 10px;
 }
@@ -411,7 +411,6 @@ h3 {
     margin-top: 10px;
     margin-bottom: 0;
     color: rgb(0, 0, 50);
-    text-shadow: 0px -2px 0px rgb(20, 170, 150), 0px -2px 2px rgb(0, 100, 20, 0.8);
 }
 
 .edit-p {
@@ -419,7 +418,6 @@ h3 {
     font-size: 18px;
     text-align: center;
     color: rgb(0, 0, 50);
-    text-shadow: 0px -1px 0px rgb(20, 170, 50);
 }
 
 #title-input {
@@ -439,7 +437,7 @@ h3 {
     min-height: 40px;
     max-height: 40vh;
     background-color: rgba(255, 255, 255, 0.8);
-    font-size: 14px;
+    font-size: 18px;
     box-shadow: 0px -2px 4px rgb(20, 100, 120, 0.3);
     border-radius: 5px;
 }

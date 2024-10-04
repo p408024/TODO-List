@@ -12,9 +12,9 @@ let cancelButton   = document.getElementById("cancel-button")
 
 // Global state
 let tasks = [
-    [{ id: 20, title: "Comprar ous 20", description: "anar al mercadona i comprar ous XL", marked: "black" },{ id: 50, title: "Comprar ous 50", description: "anar al mercadona i comprar ous XL", marked: "black" }, { id: 70, title: "Comprar ous 70", description: "anar al mercadona i comprar ous XL", marked: "red" }],
-    [{ id: 53, title: "Comprar pomes", description: "pomespomespomespomes", marked: "black" },{id: 0, title: "0", description: "nah", marked: "black"}],
-    [{ id: 63, title: "Netejar cuina (lejía)", description: "cuinacuinacuinacuinacuinacuina", marked: "black" }]
+    [{ id: 20, title: "Comprar ous 20", description: "anar al mercadona i comprar ous XL", marked: "unmarked" },{ id: 50, title: "Comprar ous 50", description: "anar al mercadona i comprar ous XL", marked: "unmarked" }, { id: 70, title: "Comprar ous 70", description: "anar al mercadona i comprar ous XL", marked: "red" }],
+    [{ id: 53, title: "Comprar pomes", description: "pomespomespomespomes", marked: "unmarked" }],
+    [{ id: 63, title: "Netejar cuina (lejía)", description: "cuinacuinacuinacuinacuinacuina", marked: "unmarked" }]
 ]
 
 //#region TASK DATA FUNCTIONS
@@ -133,7 +133,7 @@ function render() {
                     <p>${task.description}</p>
                     <div class="btn-container">
                         <button class="btn" onClick="moveTask(this, -1)">⏪</button>
-                        <button class="btn">⬆️</button>
+                        <button class="btn" onClick="sortTask(this.parentElement.parentElement.parentElement.id)">⬆️</button>
                         <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement, 'edit')">
                             ✏️
                         </button>
@@ -153,7 +153,7 @@ function render() {
                     <p>${task.description}</p>
                     <div class="btn-container">
                         <button class="btn" onClick="moveTask(this, -1)">⏪</button>
-                        <button class="btn">⬆️</button>
+                        <button class="btn" onClick="sortTask(this.parentElement.parentElement.parentElement.id)">⬆️</button>
                         <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement, 'edit')">
                             ✏️
                         </button>
@@ -173,7 +173,7 @@ function render() {
                     <p>${task.description}</p>
                     <div class="btn-container">
                         <button class="btn" onClick="moveTask(this, -1)">⏪</button>
-                        <button class="btn">⬆️</button>
+                        <button class="btn" onClick="sortTask(this.parentElement.parentElement.parentElement.id)">⬆️</button>
                         <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement, 'edit')">
                             ✏️
                         </button>
