@@ -29,7 +29,7 @@ function modifyTask(newTaskData) {
 
     // Update
     render()
-    toggleModifyPopup()
+    toggleModifyPopup(false, 'edit')
 }
 
 function newTask(columnId) {
@@ -133,9 +133,8 @@ function render() {
                     <p>${task.description}</p>
                     <div class="btn-container">
                         <button class="btn" onClick="moveTask(this, -1)">⏪</button>
-                        <button class="btn">🎨</button>
-                        <button class="btn">🕒</button>
-                        <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement)">
+                        <button class="btn">⬆️</button>
+                        <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement, 'edit')">
                             ✏️
                         </button>
                         <button class="btn" onClick="deleteTask(${task.id})">❌</button>
@@ -154,9 +153,8 @@ function render() {
                     <p>${task.description}</p>
                     <div class="btn-container">
                         <button class="btn" onClick="moveTask(this, -1)">⏪</button>
-                        <button class="btn">🎨</button>
-                        <button class="btn">🕒</button>
-                        <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement)">
+                        <button class="btn">⬆️</button>
+                        <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement, 'edit')">
                             ✏️
                         </button>
                         <button class="btn" onClick="deleteTask(${task.id})">❌</button>
@@ -175,8 +173,7 @@ function render() {
                     <p>${task.description}</p>
                     <div class="btn-container">
                         <button class="btn" onClick="moveTask(this, -1)">⏪</button>
-                        <button class="btn">🎨</button>
-                        <button class="btn">🕒</button>
+                        <button class="btn">⬆️</button>
                         <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement, 'edit')">
                             ✏️
                         </button>
