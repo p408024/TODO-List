@@ -192,7 +192,10 @@
                     <p class="edit-p">Description</p>
                     <textarea id="description-input" class="titleDesc"></textarea>
                 </div>
-                <button id="modification-button" onclick="modifyTask()" class="w85">ACCEPT</button>
+                <div class="w85 modiCanc">
+                    <button id="modification-button" onclick="modifyTask()">Accept</button>
+                    <button id="cancel-button" onclick="toggleModifyPopup(false)">Cancel</button>
+                </div>
             </div>
         </div>
 </body>
