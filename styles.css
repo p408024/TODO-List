@@ -141,7 +141,7 @@ h3 {
 
 /* Estilo del div de cada tasca */
 .taskbox {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 6px;
     margin-bottom: 5px;
     margin-left: 2px;

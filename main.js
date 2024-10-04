@@ -11,7 +11,7 @@ let editButton     = document.getElementById("modification-button")
 // Global state
 let tasks = [
     [{ id: 20, title: "Comprar ous 20", description: "anar al mercadona i comprar ous XL", marked: "black" },{ id: 50, title: "Comprar ous 50", description: "anar al mercadona i comprar ous XL", marked: "black" }, { id: 70, title: "Comprar ous 70", description: "anar al mercadona i comprar ous XL", marked: "red" }],
-    [{ id: 53, title: "Comprar pomes", description: "pomespomespomespomes", marked: "black" }],
+    [{ id: 53, title: "Comprar pomes", description: "pomespomespomespomes", marked: "black" },{id: 0, title: "0", description: "nah", marked: "black"}],
     [{ id: 63, title: "Netejar cuina (lejía)", description: "cuinacuinacuinacuinacuinacuina", marked: "black" }]
 ]
 
@@ -51,7 +51,7 @@ function newTask(columnId) {
         if (allId.includes(x) == false) {
             newId = x
             // console.log(newId)
-            columnToAdd.push({id: newId, title: "La teva tasca", description: "Descripció", marked: "black"})
+            columnToAdd.push({id: newId, title: "La teva tasca", description: "Descripció", marked: "unmarked"})
             u = 1
             // console.log(columnToAdd)
         }
@@ -125,7 +125,7 @@ function render() {
         //         <button style="width: 100%" onClick="moveTask(this, 1)">➡️</button>
         //     </div>`
         todoElement.innerHTML += `
-            <div id=${task.id} class="taskbox ${" " + task.marked}">
+            <div id=${task.id} class="taskbox ${ task.marked!="unmarked" ? task.marked : ''}">
                 <button onclick="accordionToggleVisible(this)" class="accordion active">${task.title}</button>
                 <div class="panel" style="display: none;">
                     <p>${task.description}</p>
@@ -146,7 +146,7 @@ function render() {
 
     tasks[1].forEach(task => {
         doingElement.innerHTML += `
-            <div id=${task.id} class="taskbox ${" " + task.marked}">
+            <div id=${task.id} class="taskbox ${ task.marked!="unmarked" ? task.marked : ''}">
                 <button onclick="accordionToggleVisible(this)" class="accordion active">${task.title}</button>
                 <div class="panel" style="display: none;">
                     <p>${task.description}</p>
@@ -167,7 +167,7 @@ function render() {
 
     tasks[2].forEach(task => {
         doneElement.innerHTML += `
-            <div id=${task.id} class="taskbox ${" " + task.marked}">
+            <div id=${task.id} class="taskbox ${ task.marked!="unmarked" ? task.marked : ''}">
                 <button onclick="accordionToggleVisible(this)" class="accordion active">${task.title}</button>
                 <div class="panel" style="display: none;">
                     <p>${task.description}</p>
@@ -260,8 +260,9 @@ function markTask(taskId,color){
     }
     render()
 }
-sortTask(70)
+//sortTask(70)
 markTask(53, "red")
 markTask(70, "green")
 markTask(63, "yellow")
 markTask(20, "white")
+markTask(50, "blue")
