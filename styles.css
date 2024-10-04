@@ -1,5 +1,6 @@
 body {
     background-image: linear-gradient(to bottom right, rgb(160, 160, 230), rgb(96, 216, 156));
+    background-attachment: fixed;
 }
 
 .task-column {
@@ -92,7 +93,8 @@ body {
 }
 
 .task-plus {
-    color: #444;
+    color: rgb(0, 0, 70);
+    background-color: rgb(255, 255, 255, 0.7);
     cursor: pointer;
     padding: 8px;
     width: calc(100% - 40px);
@@ -102,12 +104,14 @@ body {
     outline: none;
     margin: 14px 20px;
     /* Ajuste del margen */
-    border: inset 1px black;
+    border: inset 2px black;
 }
 
 .task-plus:hover {
-    box-shadow: inset 0 0 0 1px black;
-    transition: 0.1s;
+
+    transition: 0.2s;
+    border: inset 2px white;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 h1 {
@@ -183,6 +187,7 @@ h3 {
 .btn {
     display: table-row;
     width: calc((100% / 5) - 1px);
+    height: 24px;
     margin: 5px 0.5px;
     /* Margen entre botones */
     text-align: center;
@@ -191,8 +196,6 @@ h3 {
     border-radius: 4px;
     font-size: 12px;
     border: outset 2px black;
-    height: 24px;
-
 }
 
 .btn:hover {
@@ -201,7 +204,6 @@ h3 {
     border-radius: 7px;
     transition: 0.2s;
     border: outset 2px white;
-
 }
 
 .panel p {
@@ -323,8 +325,15 @@ h3 {
     border-radius: 4px;
 }
 
+#no-click-zone {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
 #modification-popup {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     display: none;
@@ -336,19 +345,17 @@ h3 {
 }
 
 .pop-up {
-    height:fit-content;
     width: 40%;
-    max-width: 200px;
+    max-width: 300px;
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2% 3% 4% 3%;
     justify-content: center;
-
-    background-color: white;
-    border: 4px solid black;
-    border-radius: 20px;
+    background-image: linear-gradient(to bottom, rgba(120, 120, 190, 0.95), rgba(90, 145, 170, 0.85));
+    border: 2px dotted rgb(0, 0, 70);
+    border-radius: 10px;
 }
 
 .w85 {
@@ -365,23 +372,28 @@ h3 {
 
 .modiCanc button {
     width: 100%;
-    margin: 0px 3px;
+    margin: 12px 3px 0px;
     height: 140%;
     cursor: pointer;
     padding: 8px;
-    border-radius: 12px;
+    border-radius: 7px;
     outline: none;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.75);
     border: inset 1px black;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500;
+    color: rgb(0, 0, 70);
     text-transform: uppercase;
+    border: outset 2px black;
 }
 
 .modiCanc button:hover {
-    box-shadow: inset 0 0 0 2px black;
-    transition: 0.1s;
+    transition: 0.2s;
+    background-color: rgba(255, 255, 255, 0.90);
+    border: outset 2px white;
+    border-radius: 10px;
 }
+
 
 .titleDesc {
     width: 100%;
@@ -399,18 +411,52 @@ h3 {
     font-weight: bold;
     margin-top: 10px;
     margin-bottom: 0;
+    color: rgb(0, 0, 50);
+    text-shadow: 0px -2px 0px rgb(20, 170, 150), 0px -2px 2px rgb(0, 100, 20, 0.8);
 }
 
 .edit-p {
     font-family: sans-serif;
     font-size: 18px;
     text-align: center;
+    color: rgb(0, 0, 50);
+    text-shadow: 0px -1px 0px rgb(20, 170, 50);
+}
+
+#title-input {
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    box-shadow: 0px -3px 4px rgb(20, 100, 120, 0.3);
+    border-radius: 5px;
+}
+
+#title-input:focus {
+    border-radius: 8px;
+}
+
+#description-input {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 40px;
+    max-height: 40vh;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    box-shadow: 0px -2px 4px rgb(20, 100, 120, 0.3);
+    border-radius: 5px;
+}
+
+#description-input:focus {
+    border-radius: 8px;
+}
+
+#modification-button {
+
+}
+
+#cancel-button {
+
 }
 
 .none {
     display: none;
-}
-
-.black {
-    color: black;
 }
