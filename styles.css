@@ -208,8 +208,7 @@ h3 {
 .panel p {
     text-align: left;
     font-family: sans-serif;
-    font-size: 12px;
-    text-shadow: 0px -1.5px 0px rgba(0, 0, 0, 0.7);
+    font-size: 20px;
     color: white;
     word-wrap: break-word;
 }
@@ -448,4 +447,26 @@ h3 {
 
 .none {
     display: none;
+}
+
+.divColors {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.chooseColor {
+    width: 60%;
+    margin-top: 10.5%;
+}
+
+#color-input {
+    width: 60%;
+    height: 50%;
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
 }
