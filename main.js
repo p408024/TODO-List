@@ -192,8 +192,10 @@ render()
 function toggleModifyPopup(taskElement, mode) {
     if (mode == "create") {
         cancelButton.style.display = "none"
+        editTitleText.innerText = "New Task"
     } else if (mode == "edit") {
         cancelButton.style.display = "block"
+        editTitleText.innerText = "Edit Task"
     } else {
         console.log("ERROR: Invalid modify popup mode");
         return
