@@ -141,7 +141,7 @@ h3 {
 
 /* Estilo del div de cada tasca */
 .taskbox {
-    background-color: rgba(0, 0, 0, 0.5); /* Esto deberia ir a una ID unica para cada caja de tasca, para la funcionalidad de asignar colores a las tascas*/
+    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 6px;
     margin-bottom: 5px;
     margin-left: 2px;
@@ -152,6 +152,24 @@ h3 {
 .taskbox:hover {
     border: dashed 1px rgb(220, 250, 220, 1);
     transition: 0.2s;
+}
+.black{
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.red{
+    background-color: rgba(255, 0, 0, 0.8);
+}
+.yellow{
+    background-color: rgba(255, 255, 0, 0.8);
+}
+.green{
+    background-color: rgba(0, 128, 0, 0.8);
+}
+.blue{
+    background-color: rgba(0, 0, 255, 0.8);
+}
+.white{
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .btn-container{

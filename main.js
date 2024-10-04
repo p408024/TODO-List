@@ -10,9 +10,9 @@ let editButton     = document.getElementById("modification-button")
 
 // Global state
 let tasks = [
-    [{ id: 20, title: "Comprar ous 20", description: "anar al mercadona i comprar ous XL" },{ id: 50, title: "Comprar ous 50", description: "anar al mercadona i comprar ous XL" }, { id: 70, title: "Comprar ous 70", description: "anar al mercadona i comprar ous XL" }],
-    [{ id: 53, title: "Comprar pomes", description: "pomespomespomespomes" }],
-    [{ id: 63, title: "Netejar cuina (lejía)", description: "cuinacuinacuinacuinacuinacuina" }]
+    [{ id: 20, title: "Comprar ous 20", description: "anar al mercadona i comprar ous XL", marked: "black" },{ id: 50, title: "Comprar ous 50", description: "anar al mercadona i comprar ous XL", marked: "black" }, { id: 70, title: "Comprar ous 70", description: "anar al mercadona i comprar ous XL", marked: "red" }],
+    [{ id: 53, title: "Comprar pomes", description: "pomespomespomespomes", marked: "black" }],
+    [{ id: 63, title: "Netejar cuina (lejía)", description: "cuinacuinacuinacuinacuinacuina", marked: "black" }]
 ]
 
 //#region TASK DATA FUNCTIONS
@@ -43,7 +43,7 @@ function newTask(columnId) {
     for (let i = 0; i < tasks[2].length; i++) {
         allId.push(tasks[2][i].id)
     }
-    console.log(allId)
+    //console.log(allId)
     let newId = 0
     let u = 0
     let x = 0
@@ -51,7 +51,7 @@ function newTask(columnId) {
         if (allId.includes(x) == false) {
             newId = x
             // console.log(newId)
-            columnToAdd.push({id: newId, title: "La teva tasca", description: "Descripció"})
+            columnToAdd.push({id: newId, title: "La teva tasca", description: "Descripció", marked: "black"})
             u = 1
             // console.log(columnToAdd)
         }
@@ -125,7 +125,7 @@ function render() {
         //         <button style="width: 100%" onClick="moveTask(this, 1)">➡️</button>
         //     </div>`
         todoElement.innerHTML += `
-            <div id=${task.id} class="taskbox">
+            <div id=${task.id} class="taskbox ${" " + task.marked}">
                 <button onclick="accordionToggleVisible(this)" class="accordion active">${task.title}</button>
                 <div class="panel" style="display: none;">
                     <p>${task.description}</p>
@@ -146,7 +146,7 @@ function render() {
 
     tasks[1].forEach(task => {
         doingElement.innerHTML += `
-            <div id=${task.id} class="taskbox">
+            <div id=${task.id} class="taskbox ${" " + task.marked}">
                 <button onclick="accordionToggleVisible(this)" class="accordion active">${task.title}</button>
                 <div class="panel" style="display: none;">
                     <p>${task.description}</p>
@@ -167,7 +167,7 @@ function render() {
 
     tasks[2].forEach(task => {
         doneElement.innerHTML += `
-            <div id=${task.id} class="taskbox">
+            <div id=${task.id} class="taskbox ${" " + task.marked}">
                 <button onclick="accordionToggleVisible(this)" class="accordion active">${task.title}</button>
                 <div class="panel" style="display: none;">
                     <p>${task.description}</p>
@@ -189,7 +189,7 @@ function render() {
 render()
 
 function toggleModifyPopup(taskElement) {
-    console.log(taskElement);
+    //console.log(taskElement);
 
     // If we are enabling the popup
     if (modPopup.style.display != "flex") {        
@@ -235,7 +235,7 @@ function getTaskById(taskId) {
 }
 
 //funció per moure elements al top d'una columna
-function sortTask (taskId){
+function sortTask(taskId){
     for (let i = 0; i < 3; i++){
         for (let j = 0; j < tasks[i].length; j++) {
             //console.log()
@@ -248,4 +248,20 @@ function sortTask (taskId){
     render()
 }
 
-
+//funció per marcar tasques de color vermell
+function markTask(taskId,color){
+    for (let i = 0; i < 3; i++){
+        for (let j = 0; j < tasks[i].length; j++){
+            if(tasks[i][j].id==taskId){
+                tasks[i][j].marked = color
+                //console.log("primer " + tasks[i][j].id)
+            }
+        }
+    }
+    render()
+}
+sortTask(70)
+markTask(53, "red")
+markTask(70, "green")
+markTask(63, "yellow")
+markTask(20, "white")
