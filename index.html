@@ -190,6 +190,18 @@
                     <p class="edit-p">Description</p>
                     <textarea id="description-input" class="titleDesc"></textarea>
                 </div>
+                <div class="w85 divColors">
+                    <p class="edit-p chooseColor">Choose a color: </p>
+                    <select name="colors" id="color-input">
+                        <option value="green">Green</option>
+                        <option value="red">Red</option>
+                        <option value="yellow">Yellow</option>
+                        <option value="blue">Blue</option>
+                        <option value="black">Black</option>
+                        <option value="white">White</option>
+                        <option value="unmarked">None</option>
+                    </select>
+                </div>
                 <div class="w85 modiCanc">
                     <button id="modification-button" onclick="modifyTask()">Accept</button>
                     <button id="cancel-button" onclick="toggleModifyPopup(false, 'create')">Cancel</button>

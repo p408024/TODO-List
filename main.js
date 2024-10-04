@@ -9,6 +9,7 @@ let editDescInput  = document.getElementById("description-input")
 let editButton     = document.getElementById("modification-button")
 let editTitleText  = document.getElementById("modification-title")
 let cancelButton   = document.getElementById("cancel-button")
+let editColorInput  = document.getElementById("color-input")
 
 // Global state
 let tasks = [
@@ -208,18 +209,19 @@ function toggleModifyPopup(taskElement, mode) {
 
         editTitleInput.value = task.title
         editDescInput.value  = task.description
+        editColorInput.value = task.marked
 
         modPopup.style.display = "flex"
         editButton.onclick = () => modifyTask({
             id: parseInt(taskId),
             title: editTitleInput.value,
-            description: editDescInput.value
+            description: editDescInput.value,
+            marked: editColorInput.value
         })
     } else {
         modPopup.style.display = "none"
     }
 }
-
 function accordionToggleVisible(element) {
     element.classList.toggle("active");
     let panel = element.nextElementSibling;
@@ -271,7 +273,7 @@ function sortTask(taskId){
 }
 
 //funció per marcar tasques de color vermell
-function markTask(taskId,color){
+function markTask(taskId, color){
     for (let i = 0; i < 3; i++){
         for (let j = 0; j < tasks[i].length; j++){
             if(tasks[i][j].id==taskId){
@@ -281,6 +283,9 @@ function markTask(taskId,color){
         }
     }
     render()
+}
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
 }
 //sortTask(70)
 // markTask(53, "red")
