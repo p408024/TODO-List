@@ -7,6 +7,8 @@ let modPopup       = document.getElementById("modification-popup")
 let editTitleInput = document.getElementById("title-input")
 let editDescInput  = document.getElementById("description-input")
 let editButton     = document.getElementById("modification-button")
+let editTitleText  = document.getElementById("modification-title")
+let cancelButton   = document.getElementById("cancel-button")
 
 // Global state
 let tasks = [
@@ -188,11 +190,20 @@ function render() {
 }
 render()
 
-function toggleModifyPopup(taskElement) {
-    console.log(taskElement);
+// Opens the task data entry popup
+// taskElement is the task card div, mode is the modify popup desired action (create/edit) as a string
+function toggleModifyPopup(taskElement, mode) {
+    if (mode == "create") {
+        cancelButton.style.display = "none"
+    } else if (mode == "edit") {
+        cancelButton.style.display = "block"
+    } else {
+        console.log("ERROR: Invalid modify popup mode");
+        return
+    }
 
     // If we are enabling the popup
-    if (modPopup.style.display != "flex") {        
+    if (modPopup.style.display != "flex") {
         let taskId = taskElement.id
         let task = getTaskById(taskId)
 
@@ -205,7 +216,6 @@ function toggleModifyPopup(taskElement) {
             title: editTitleInput.value,
             description: editDescInput.value
         })
-
     } else {
         modPopup.style.display = "none"
     }

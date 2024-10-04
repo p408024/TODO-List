@@ -1,7 +1,4 @@
-
-
 body {
-    /*background-image: linear-gradient(to bottom right, lightblue, lightgreen);*/
     background-image: linear-gradient(to bottom right, rgb(160, 160, 230), rgb(96, 216, 156));
 }
 
@@ -53,7 +50,6 @@ body {
 .column-title button {
     margin: .5rem;
     width: 90%;
-
 }
 
 .col-container {
@@ -377,7 +373,7 @@ h3 {
     font-size: 15px;
 }
 
-.textEditarTasca {
+#modification-title {
     text-align: center;
     text-transform: uppercase;
     font-family: sans-serif;
