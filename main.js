@@ -60,7 +60,7 @@ function newTask(columnId) {
         x++
     }
     render()
-    toggleModifyPopup(document.getElementById(newId))
+    toggleModifyPopup(document.getElementById(newId), 'create')
 }
 
 // Moves task to the previous or next column, direction is -1 for left and 1 for right
