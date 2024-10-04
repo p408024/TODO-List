@@ -10,7 +10,7 @@ let editButton     = document.getElementById("modification-button")
 
 // Global state
 let tasks = [
-    [{ id: 20, title: "Comprar ous", description: "anar al mercadona i comprar ous XL" }, { id: 70, title: "Comprar ous", description: "anar al mercadona i comprar ous XL" }],
+    [{ id: 20, title: "Comprar ous 20", description: "anar al mercadona i comprar ous XL" },{ id: 50, title: "Comprar ous 50", description: "anar al mercadona i comprar ous XL" }, { id: 70, title: "Comprar ous 70", description: "anar al mercadona i comprar ous XL" }],
     [{ id: 53, title: "Comprar pomes", description: "pomespomespomespomes" }],
     [{ id: 63, title: "Netejar cuina (lejía)", description: "cuinacuinacuinacuinacuinacuina" }]
 ]
@@ -233,3 +233,19 @@ function getTaskById(taskId) {
         }            
     }   
 }
+
+//funció per moure elements al top d'una columna
+function sortTask (taskId){
+    for (let i = 0; i < 3; i++){
+        for (let j = 0; j < tasks[i].length; j++) {
+            //console.log()
+            if(tasks[i][j].id==taskId){
+                tasks[i].unshift(tasks[i][j])
+                tasks[i].splice(j+1, 1)
+            }
+        }      
+    }
+    render()
+}
+
+
