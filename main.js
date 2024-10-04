@@ -11,10 +11,10 @@ let editTitleText  = document.getElementById("modification-title")
 let cancelButton   = document.getElementById("cancel-button")
 
 // Global state
-let tasks = [
-    [{ id: 20, title: "Comprar ous", description: "anar al mercadona i comprar ous XL" }, { id: 70, title: "Comprar ous", description: "anar al mercadona i comprar ous XL" }],
-    [{ id: 53, title: "Comprar pomes", description: "pomespomespomespomes" }],
-    [{ id: 63, title: "Netejar cuina (lejía)", description: "cuinacuinacuinacuinacuinacuina" }]
+let tasks = [[], [], []
+    // [{ id: 20, title: "Comprar ous", description: "anar al mercadona i comprar ous XL" }, { id: 70, title: "Comprar ous", description: "anar al mercadona i comprar ous XL" }],
+    // [{ id: 53, title: "Comprar pomes", description: "pomespomespomespomes" }],
+    // [{ id: 63, title: "Netejar cuina (lejía)", description: "cuinacuinacuinacuinacuinacuina" }]
 ]
 
 //#region TASK DATA FUNCTIONS
@@ -28,8 +28,10 @@ function modifyTask(newTaskData) {
     }
 
     // Update
-    render()
-    toggleModifyPopup(false, 'edit')
+    setTimeout(() => {        
+        render()
+        toggleModifyPopup(false, 'edit')
+    }, 150);
 }
 
 function newTask(columnId) {
@@ -45,7 +47,7 @@ function newTask(columnId) {
     for (let i = 0; i < tasks[2].length; i++) {
         allId.push(tasks[2][i].id)
     }
-    console.log(allId)
+    // console.log(allId)
     let newId = 0
     let u = 0
     let x = 0
@@ -107,29 +109,43 @@ function deleteTask(taskId) {
 
 //#region DOM HTML functions
 // Updates task columns HTML, should be called every time "tasks" is modified
-function render() {
+function render(creatingTask) {
     // Clear columns
-    // FIXME - Buttons get deleted because all elements with "persistent" class should avoid being deleted, not just the first one
+    
     let todoAddButton = document.getElementsByClassName("task-plus")[0].outerHTML
     let doingAddButton = document.getElementsByClassName("task-plus")[1].outerHTML
     let doneAddButton = document.getElementsByClassName("task-plus")[2].outerHTML
-    // console.log(document.getElementsByClassName("task-plus")[0]);
+
+    let isAccordionOpenList = [{}, {}, {}]
+    let _cols = [todoElement, doingElement, doneElement]
+    for (let j = 0; j < isAccordionOpenList.length; j++) {
+        let columnChildren = _cols[j].children
+        for (let i = 0; i < columnChildren.length; i++) {
+            if (columnChildren[i].className == "taskbox") {
+                isAccordionOpenList[j][columnChildren[i].id] = columnChildren[i].children[0].classList.contains("active")
+            }
+        }
+    }
+
     todoElement.innerHTML = todoElement.getElementsByClassName("persistent")[0].outerHTML
     doingElement.innerHTML = doingElement.getElementsByClassName("persistent")[0].outerHTML
     doneElement.innerHTML = doneElement.getElementsByClassName("persistent")[0].outerHTML
 
     // Add a task card HTML element for every task in "tasks" array
-    tasks[0].forEach(task => {
+    tasks[0].forEach((task, i) => {
         // todoElement.innerHTML += `
         //     <div id=${task.id} style="background-color: beige; display: flex; flex-direction: horizontal; margin: .5rem; padding: 1rem; justify-content: center;">
         //         <button style="width: 100%" onClick="moveTask(this, -1)">⬅️</button>
         //         <h1 style="margin: .5rem;">${task.id}</h1>
         //         <button style="width: 100%" onClick="moveTask(this, 1)">➡️</button>
         //     </div>`
+        
         todoElement.innerHTML += `
             <div id=${task.id} class="taskbox">
-                <button onclick="accordionToggleVisible(this)" class="accordion active">${task.title}</button>
-                <div class="panel" style="display: none;">
+                <button onclick="accordionToggleVisible(this)" class="accordion ${ !isAccordionOpenList[0][task.id] || creatingTask ? "" : "active"}">
+                    ${task.title}
+                </button>
+                <div class="panel" style="display: ${ !isAccordionOpenList[0][task.id] ? "none" : "flex"}">
                     <p>${task.description}</p>
                     <div class="btn-container">
                         <button class="btn" onClick="moveTask(this, -1)">⏪</button>
@@ -145,11 +161,13 @@ function render() {
     });
     todoElement.innerHTML += todoAddButton
 
-    tasks[1].forEach(task => {
+    tasks[1].forEach((task, i) => {
         doingElement.innerHTML += `
             <div id=${task.id} class="taskbox">
-                <button onclick="accordionToggleVisible(this)" class="accordion active">${task.title}</button>
-                <div class="panel" style="display: none;">
+                <button onclick="accordionToggleVisible(this)" class="accordion ${ !isAccordionOpenList[1][task.id] || creatingTask ? "" : "active"}">
+                    ${task.title}
+                </button>
+                <div class="panel" style="display: ${ !isAccordionOpenList[1][task.id] ? "none" : "flex"}">
                     <p>${task.description}</p>
                     <div class="btn-container">
                         <button class="btn" onClick="moveTask(this, -1)">⏪</button>
@@ -165,11 +183,13 @@ function render() {
     });
     doingElement.innerHTML += doingAddButton
 
-    tasks[2].forEach(task => {
+    tasks[2].forEach((task, i) => {
         doneElement.innerHTML += `
             <div id=${task.id} class="taskbox">
-                <button onclick="accordionToggleVisible(this)" class="accordion active">${task.title}</button>
-                <div class="panel" style="display: none;">
+                <button onclick="accordionToggleVisible(this)" class="accordion ${ !isAccordionOpenList[2][task.id] || creatingTask ? "" : "active"}">
+                    ${task.title}
+                </button>
+                <div class="panel" style="display: ${ !isAccordionOpenList[2][task.id] ? "none" : "flex"}">
                     <p>${task.description}</p>
                     <div class="btn-container">
                         <button class="btn" onClick="moveTask(this, -1)">⏪</button>
