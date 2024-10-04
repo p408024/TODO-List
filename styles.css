@@ -118,7 +118,6 @@ h1 {
     text-shadow: 0px -4px 0px rgb(170, 220, 100), 0px -3px 2px rgb(0, 75, 0);
     color: rgb(0, 0, 50);
     text-align: center;
-    margin-top: -20px;
     margin-bottom: 30px;
     font-family: sans-serif;
     font-size: 40px;
@@ -160,22 +159,22 @@ h3 {
     transition: 0.2s;
 }
 .black{
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 .red{
-    background-color: rgba(255, 0, 0, 0.8);
+    background-color: rgba(255, 0, 0, 0.5);
 }
 .yellow{
-    background-color: rgba(255, 255, 0, 0.8);
+    background-color: rgba(255, 255, 0, 0.5);
 }
 .green{
-    background-color: rgba(0, 128, 0, 0.8);
+    background-color: rgba(0, 128, 0, 0.5);
 }
 .blue{
-    background-color: rgba(0, 0, 255, 0.8);
+    background-color: rgba(0, 0, 255, 0.5);
 }
 .white{
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .btn-container {
@@ -338,7 +337,7 @@ h3 {
     height: 100%;
     display: none;
     flex-direction: column;
-    top: 72px;
+    top: 80px;
     justify-content: top;
     align-items: center;
     left: 0%;
@@ -447,14 +446,6 @@ h3 {
 
 #description-input:focus {
     border-radius: 8px;
-}
-
-#modification-button {
-
-}
-
-#cancel-button {
-
 }
 
 .none {
