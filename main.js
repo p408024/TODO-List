@@ -177,7 +177,7 @@ function render() {
                         <button class="btn" onClick="moveTask(this, -1)">⏪</button>
                         <button class="btn">🎨</button>
                         <button class="btn">🕒</button>
-                        <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement)">
+                        <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement, 'edit')">
                             ✏️
                         </button>
                         <button class="btn" onClick="deleteTask(${task.id})">❌</button>
