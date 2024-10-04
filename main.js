@@ -281,8 +281,8 @@ function markTask(taskId,color){
     render()
 }
 //sortTask(70)
-markTask(53, "red")
-markTask(70, "green")
-markTask(63, "yellow")
-markTask(20, "white")
-markTask(50, "blue")
+// markTask(53, "red")
+// markTask(70, "green")
+// markTask(63, "yellow")
+// markTask(20, "white")
+// markTask(50, "blue")
