@@ -369,3 +369,7 @@ p {
 .none {
     display: none;
 }
+
+.black {
+    color: black;
+}
