@@ -8,7 +8,8 @@ let editTitleInput = document.getElementById("title-input")
 let editDescInput  = document.getElementById("description-input")
 let editButton     = document.getElementById("modification-button")
 let editTitleText  = document.getElementById("modification-title")
-let cancelButton   = document.getElementById("cancel-button")
+let cancelEdit   = document.getElementById("cancel-edit")
+let cancelCreate = document.getElementById("cancel-create")
 let editColorInput  = document.getElementById("color-input")
 
 // Global state
@@ -103,6 +104,9 @@ function deleteTask(taskId) {
             if (tasks[i][j].id == taskId)
                 tasks[i].splice(j, 1)
         }
+    }
+    if(modPopup.style.display == "flex"){
+        modPopup.style.display = "none"
     }
     render()
 }
@@ -210,10 +214,14 @@ render()
 // taskElement is the task card div, mode is the modify popup desired action (create/edit) as a string
 function toggleModifyPopup(taskElement, mode) {
     if (mode == "create") {
-        cancelButton.style.display = "none"
+        cancelEdit.style.display = "none"
+        //cancelCreate.innerHTML.onclick = `deleteTask(${taskElement.id})`
+        cancelCreate.innerHTML = `<div id="cancel-create" onclick="deleteTask(${taskElement.id})">Cancel</div>`
+        cancelCreate.style.display = "block"
         editTitleText.innerText = "New Task"
     } else if (mode == "edit") {
-        cancelButton.style.display = "block"
+        cancelEdit.style.display = "block"
+        cancelCreate.style.display = "none"
         editTitleText.innerText = "Edit Task"
     } else {
         console.log("ERROR: Invalid modify popup mode");
