@@ -105,6 +105,9 @@ function deleteTask(taskId) {
                 tasks[i].splice(j, 1)
         }
     }
+    if(modPopup.style.display == "flex"){
+        modPopup.style.display = "none"
+    }
     render()
 }
 //#endregion
@@ -214,6 +217,8 @@ render()
 function toggleModifyPopup(taskElement, mode) {
     if (mode == "create") {
         cancelEdit.style.display = "none"
+        //cancelCreate.innerHTML.onclick = `deleteTask(${taskElement.id})`
+        cancelCreate.innerHTML = `<div id="cancel-create" onclick="deleteTask(${taskElement.id})">Cancel</div>`
         cancelCreate.style.display = "block"
         editTitleText.innerText = "New Task"
     } else if (mode == "edit") {
