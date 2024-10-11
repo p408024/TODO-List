@@ -38,7 +38,7 @@ function modifyTask(newTaskData) {
 function newTask(columnId) {
     let columnToAdd = tasks[columnId]
     // Create new task data (id)
-    let allId = []
+    let allId = [0]
     for (let i = 0; i < tasks[0].length; i++) {
         allId.push(tasks[0][i].id)
     }
@@ -48,7 +48,7 @@ function newTask(columnId) {
     for (let i = 0; i < tasks[2].length; i++) {
         allId.push(tasks[2][i].id)
     }
-    // console.log(allId)
+    //console.log(allId)
     let newId = 0
     let u = 0
     let x = 0
