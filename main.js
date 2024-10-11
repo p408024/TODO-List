@@ -149,7 +149,6 @@ function render(creatingTask) {
                 <div class="panel" style="display: ${ !isAccordionOpenList[0][task.id] ? "none" : "flex"}">
                     <p>${task.description}</p>
                     <div class="btn-container">
-                        <button class="btn" onClick="moveTask(this, -1)">⏪</button>
                         <button class="btn" onClick="sortTask(this.parentElement.parentElement.parentElement.id)">⬆️</button>
                         <button class="btn" onClick="toggleModifyPopup(this.parentElement.parentElement.parentElement, 'edit')">
                             ✏️
@@ -199,7 +198,6 @@ function render(creatingTask) {
                             ✏️
                         </button>
                         <button class="btn" onClick="deleteTask(${task.id})">❌</button>
-                        <button class="btn" onClick="moveTask(this, 1)">⏩</button>
                     </div>
                 </div>
             </div>`
