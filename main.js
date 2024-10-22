@@ -238,12 +238,25 @@ function toggleModifyPopup(taskElement, mode) {
         editColorInput.value = task.marked
 
         modPopup.style.display = "flex"
-        editButton.onclick = () => modifyTask({
-            id: parseInt(taskId),
-            title: editTitleInput.value,
-            description: editDescInput.value,
-            marked: editColorInput.value
-        })
+        editButton.onclick = () => {
+            //check if title is empty
+
+            /*
+            let checkTitle = editTitleInput.value
+            while (checkTitle.includes(" ") == true) {
+                checkTitle = checkTitle.replace(" ","")
+            }*/
+            if (editTitleInput.value.replaceAll(" ","") == "") {
+                window.alert("Please Insert Title")
+            } else {
+                modifyTask({
+                id: parseInt(taskId),
+                title: editTitleInput.value,
+                description: editDescInput.value,
+                marked: editColorInput.value
+                })
+            }}
+            
     } else {
         modPopup.style.display = "none"
     }
