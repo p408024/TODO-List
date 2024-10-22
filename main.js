@@ -249,13 +249,37 @@ function toggleModifyPopup(taskElement, mode) {
             if (editTitleInput.value.replaceAll(" ","") == "") {
                 window.alert("Please Insert Title")
             } else {
-                modifyTask({
-                id: parseInt(taskId),
-                title: editTitleInput.value,
-                description: editDescInput.value,
-                marked: editColorInput.value
-                })
-            }}
+                let u = 0 
+                for(let i = 0; i < tasks[0].length; i++){
+                    if (tasks[0][i].title == editTitleInput.value && tasks[0][i].marked == editColorInput.value) {
+                        u++
+                    }
+                }
+                for(let i = 0; i < tasks[1].length; i++){
+                    if (tasks[1][i].title == editTitleInput.value && tasks[1][i].marked == editColorInput.value) {
+                        u++
+                    }
+                }
+                for(let i = 0; i < tasks[2].length; i++){
+                    if (tasks[2][i].title == editTitleInput.value && tasks[2][i].marked == editColorInput.value) {
+                        u++
+                    }
+                }
+                if(editTitleInput.value == "La teva tasca" && editColorInput.value == "unmarked"){
+                    u--
+                }
+                if(u>0) {
+                    window.alert("Please change title or color")
+                } else{
+                    modifyTask({
+                    id: parseInt(taskId),
+                    title: editTitleInput.value,
+                    description: editDescInput.value,
+                    marked: editColorInput.value
+                    })
+            }
+            }
+        }
             
     } else {
         modPopup.style.display = "none"
