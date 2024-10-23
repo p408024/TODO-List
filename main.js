@@ -307,7 +307,6 @@ function toggleModifyPopup(taskElement, mode) {
                         marked: editColorInput.value,
                         accordion: getTaskById(taskElement.id).accordion
                     })
-                    console.log(taskElement)
                 }
             }
         }
