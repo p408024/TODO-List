@@ -58,7 +58,7 @@ function newTask(columnId) {
         if (allId.includes(x) == false) {
             newId = x
             // console.log(newId)
-            columnToAdd.push({ id: newId, title: "La teva tasca", description: "Descripció", marked: "unmarked" })
+            columnToAdd.push({ id: newId, title: "", description: "", marked: "unmarked" })
             u = 1
             // console.log(columnToAdd)
         }
@@ -317,11 +317,11 @@ function toggleModifyPopup(taskElement, mode) {
                         u++
                     }
                 }
-                if(editTitleInput.value == "La teva tasca" && editColorInput.value == "unmarked"){
+                /*if(editTitleInput.value == "La teva tasca" && editColorInput.value == "unmarked" && mode == "create"){
                     u--
-                }
+                }*/
                 if(u>0) {
-                    window.alert("Please change title or color")
+                    window.alert("There cannot be two tasks with identical title AND color")
                 } else{
                     modifyTask({
                     id: parseInt(taskId),
