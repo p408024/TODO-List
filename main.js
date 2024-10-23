@@ -452,40 +452,43 @@ function markTask(taskId, color) {
     updateTaskButtons()
 }
 
-var limitTitle = 80
+var limitTitle = 80;
 var limitDesc = 500;
 
-$(function () {
-    $('#contadorTitle').html("Max. length: 80 characters");
-    $("#title-input").on("input", function () {
+// Ejecutar cuando la página se haya cargado
+document.addEventListener("DOMContentLoaded", function () {
+    // Título
+    var titleInput = document.getElementById("title-input");
+    var titleCounter = document.getElementById("contadorTitle");
+    titleCounter.innerHTML = "Max. length: 80 characters";
 
-        // Obtener la longitud actual del valor del textarea
-        var init = $(this).val().length;
+    titleInput.addEventListener("input", function () {
+        // Obtener la longitud actual del valor del input
+        var init = titleInput.value.length;
 
         // Calcular los caracteres restantes
         var total_characters = limitTitle - init;
 
         // Actualizar el contador con los caracteres restantes
-        $('#contadorTitle').html("Max. length: " + total_characters + " characters");
-        var total_characters = 80
+        titleCounter.innerHTML = "Max. length: " + total_characters + " characters";
     });
-    render()
-    updateTaskButtons()
-});
 
-$(function () {
-    $("#description-input").on("input", function () {
-        $('#contadorDesc').html("Max. length: " + limitDesc + " characters");
-        
-        // Obtener la longitud actual del valor del textarea
-        var init = $(this).val().length;
+    // Descripción
+    var descInput = document.getElementById("description-input");
+    var descCounter = document.getElementById("contadorDesc");
+    descCounter.innerHTML = "Max. length: " + limitDesc + " characters";
+
+    descInput.addEventListener("input", function () {
+        // Obtener la longitud actual del valor del input
+        var init = descInput.value.length;
 
         // Calcular los caracteres restantes
         var total_characters = limitDesc - init;
 
         // Actualizar el contador con los caracteres restantes
-        $('#contadorDesc').html("Max. length: " + total_characters + " characters");
+        descCounter.innerHTML = "Max. length: " + total_characters + " characters";
     });
-    render()
-    updateTaskButtons()
+
+    render();
+    updateTaskButtons();
 });
