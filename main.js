@@ -489,8 +489,8 @@ document.addEventListener("DOMContentLoaded", function () {
         descCounter.innerHTML = total_characters + " characters remaining";
     });
 
-    render();
-    updateTaskButtons();
+    render()
+    updateTaskButtons()
 });
 
 // Funciones para reiniciar y los contadores
@@ -499,6 +499,8 @@ function resetCounterTitle() {
 
     // Reiniciar el contador
     titleCounter.innerHTML = "Max. length: " + limitTitle + " characters";
+    render()
+    updateTaskButtons()
 }
 
 function resetCounterDesc() {
@@ -506,4 +508,6 @@ function resetCounterDesc() {
 
     // Reiniciar el contador
     descCounter.innerHTML = "Max. length: " + limitDesc + " characters";
+    render()
+    updateTaskButtons()
 }
