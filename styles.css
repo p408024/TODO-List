@@ -470,3 +470,9 @@ h3 {
     justify-content: center;
     margin-top: 10%;
 }
+
+.max-lenght {
+    padding: 0px;
+    font-size: 15px;
+    margin: 0px;
+}
