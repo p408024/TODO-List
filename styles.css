@@ -202,24 +202,9 @@ h3 {
     border: outset 2px black;
 }
 
-.disabled {
-    cursor: not-allowed;
-    display: table-row;
-    width: calc((100% / 4) - 1px);
-    height: 24px;
-    margin: 5px 0.5px;
-    /* Margen entre botones */
-    text-align: center;
-    background-color: whitesmoke;
-    opacity: 0.8;
-    border-radius: 4px;
-    font-size: 12px;
-    border: outset 2px black;
-}
-
 .btn {
     display: table-row;
-    width: calc((100% / 5) - 1px);
+    width: calc((100% / 4) - 1px);
     height: 24px;
     margin: 5px 0px;
     /* Margen entre botones */
