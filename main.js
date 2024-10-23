@@ -2,6 +2,7 @@
 let todoElement = document.getElementById("todo-column")
 let doingElement = document.getElementById("doing-column")
 let doneElement = document.getElementById("done-column")
+
 let modPopup = document.getElementById("modification-popup")
 let editTitleInput = document.getElementById("title-input")
 let editDescInput = document.getElementById("description-input")
@@ -202,10 +203,8 @@ function render(creatingTask) {
     });
     doneElement.innerHTML += doneAddButton
 }
-
 render()
 updateTaskButtons()
-
 function updateTaskButtons() {
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < tasks[i].length; j++) {
@@ -217,7 +216,7 @@ function updateTaskButtons() {
             const moveDownBtn = taskElement.querySelector('button[onClick*="moveTaskDown"]');
             const move2UpBtn = taskElement.querySelector('button[onClick*="sortTaskUp"]');
             const move2DownBtn = taskElement.querySelector('button[onClick*="sortTaskDown"]');
-
+            
             // Si la tarea está en la primera posición, desactivar el botón de mover arriba
             if (j === 0) {
                 moveUpBtn.classList.add("disabled");
@@ -231,7 +230,7 @@ function updateTaskButtons() {
                 move2UpBtn.classList.remove("disabled");
                 move2UpBtn.classList.add("btn");
             }
-
+            
             // Si la tarea está en la última posición, desactivar el botón de mover abajo
             if (j === tasks[i].length - 1) {
                 moveDownBtn.classList.add("disabled");
@@ -247,6 +246,7 @@ function updateTaskButtons() {
         }
     }
 }
+
 
 // Opens the task data entry popup
 // taskElement is the task card div, mode is the modify popup desired action (create/edit) as a string
@@ -281,18 +281,18 @@ function toggleModifyPopup(taskElement, mode) {
             if (editTitleInput.value.replaceAll(" ", "") == "") {
                 window.alert("Please Insert Title")
             } else {
-                let u = 0
-                for (let i = 0; i < tasks[0].length; i++) {
+                let u = 0 
+                for(let i = 0; i < tasks[0].length; i++){
                     if (tasks[0][i].title == editTitleInput.value && tasks[0][i].marked == editColorInput.value) {
                         u++
                     }
                 }
-                for (let i = 0; i < tasks[1].length; i++) {
+                for(let i = 0; i < tasks[1].length; i++){
                     if (tasks[1][i].title == editTitleInput.value && tasks[1][i].marked == editColorInput.value) {
                         u++
                     }
                 }
-                for (let i = 0; i < tasks[2].length; i++) {
+                for(let i = 0; i < tasks[2].length; i++){
                     if (tasks[2][i].title == editTitleInput.value && tasks[2][i].marked == editColorInput.value) {
                         u++
                     }
@@ -311,7 +311,7 @@ function toggleModifyPopup(taskElement, mode) {
                 }
             }
         }
-
+            
     } else {
         modPopup.style.display = "none"
     }
@@ -328,6 +328,7 @@ function accordionToggleVisible(taskId) {
 }
 
 //#endregion
+
 // Helper functions
 function getTaskById(taskId) {
     for (let j = 0; j < tasks.length; j++) {
@@ -392,7 +393,7 @@ function sortTaskDown(taskId) {
             }
         }
     }
-    render()
+    render();
     updateTaskButtons()
 }
 
@@ -415,7 +416,7 @@ function moveTaskUp(taskId) {
             }
         }
     }
-    render()
+    render();
     updateTaskButtons()
 }
 
@@ -438,7 +439,7 @@ function moveTaskDown(taskId) {
             }
         }
     }
-    render()
+    render();
     updateTaskButtons()
 }
 
