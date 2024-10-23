@@ -242,6 +242,7 @@ function toggleModifyPopup(taskElement, mode) {
         modPopup.style.display = "none"
     }
 }
+
 function accordionToggleVisible(element) {
     element.classList.toggle("active");
     let panel = element.nextElementSibling;
@@ -313,3 +314,25 @@ function myFunction() {
 // markTask(63, "yellow")
 // markTask(20, "white")
 // markTask(50, "blue")
+
+// Accounts management code
+let accounts
+let currentaccount
+function getAccounts() {
+  if (localStorage.UserAccounts != undefined) {
+    accounts = JSON.parse(localStorage.UserAccounts);
+    console.log("Account data retrieved from local storage")
+  } else {
+    accounts = [{ un: "Default User", pw: "DefPw123" }];
+    localStorage.setItem("UserAccounts", JSON.stringify(accounts));
+    console.log("No account data found, created default user")
+  }
+  if (localStorage.CurrentAccount != undefined) {
+    currentaccount = localStorage.CurrentAccount;
+    console.log("Logged in as Account #" + currentaccount)
+  } else {
+    currentaccount = 0;
+    localStorage.setItem("CurrentAccount", JSON.stringify(currentaccount));
+    console.log("No current account found, defaulting to default user")
+  }
+}

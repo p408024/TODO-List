@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="login&settings.js" defer></script>
+</head>
+
+<body onload="getAccounts()">
+    <div>
+        <div class="overlay"></div>
+        <div class="hamburger-container">
+            <div class="hamburger"></div>
+            <div class="hamburger"></div>
+            <div class="hamburger"></div>
+        </div>
+        <div class="menu">
+            <ul>
+                <li onclick="location.href='loginpage.html'" role="button">Login</li>
+                <li onclick="location.href='index.html'">Back</li>
+            </ul>
+        </div>
+        <h1>Register</h1>
+    </div>
+
+    <div id="topseparator"></div>
+    <div id="login-popup">
+        <div id="no-click-zone"></div>
+        <div class="pop-up">
+            <div class="w85">
+                <p class="edit-p">User</p>
+                <input id="userInput" class="titleDesc" type="text">
+            </div>
+            <div class="w85">
+                <p class="edit-p">Password</p>
+                <input
+                    type="password" id="passwordInput" class="titleDesc"
+                    maxlenght="128" minlength="8"
+                    placeholder="8-128 letters & numbers"
+                    autocomplete="new-password"
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+                    required />
+            </div>
+            
+            <div class="w85 modiCanc">
+                <button type="submit" id="modification-button" onclick="registeraccount()">Sign up</button>
+                <button id="cancel-button"></button> <!--Hidden button but the page display breaks if it is removed for some godforsaken reason, DO NOT TOUCH-->
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
