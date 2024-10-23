@@ -470,7 +470,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var total_characters = limitTitle - init;
 
         // Actualizar el contador con los caracteres restantes
-        titleCounter.innerHTML = "Max. length: " + total_characters + " characters";
+        titleCounter.innerHTML = "Max. length: " + total_characters + " characters remaining";
     });
 
     // Descripción
@@ -486,7 +486,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var total_characters = limitDesc - init;
 
         // Actualizar el contador con los caracteres restantes
-        descCounter.innerHTML = "Max. length: " + total_characters + " characters";
+        descCounter.innerHTML = "Max. length: " + total_characters + " characters remaining";
     });
 
     render();
