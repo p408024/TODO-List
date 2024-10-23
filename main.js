@@ -20,6 +20,7 @@ function modifyTask(newTaskData) {
         for (let i = 0; i < tasks[j].length; i++) {
             if (tasks[j][i].id == newTaskData.id) {
                 tasks[j][i] = newTaskData
+                console.log(tasks[j][i])
             }
         }
     }
@@ -29,7 +30,7 @@ function modifyTask(newTaskData) {
         render()
         updateTaskButtons()
         toggleModifyPopup(false, 'edit')
-    }, 150);
+    }, 50);
 }
 
 function newTask(columnId) {
@@ -52,7 +53,7 @@ function newTask(columnId) {
     while (u == 0) {
         if (allId.includes(x) == false) {
             newId = x
-            columnToAdd.push({ id: newId, title: "", description: "", marked: "unmarked" })
+            columnToAdd.push({ id: newId, title: "", description: "", marked: "unmarked", accordion: 0 })
             u = 1
         }
         x++
@@ -135,10 +136,10 @@ function render(creatingTask) {
     tasks[0].forEach((task, i) => {
         todoElement.innerHTML += `
             <div id=${task.id} class="taskbox ${task.marked != "unmarked" ? task.marked : ''}">
-                <button onclick="accordionToggleVisible(this)" class="accordion ${!isAccordionOpenList[0][task.id] || creatingTask ? "" : "active"}">
+                <button onclick="accordionToggleVisible(${task.id})" class="accordion ${!isAccordionOpenList[0][task.id] || creatingTask ? "" : "active"}">
                     ${task.title}
                 </button>
-                <div class="panel" style="display: ${!isAccordionOpenList[0][task.id] ? "none" : "flex"}">
+                <div class="panel" style="display: ${task.accordion == 0 ? "none" : "flex"}">
                     <p>${task.description}</p>
                     <div class="btn-container">
                         <button class="disabled">⬅️</button>
@@ -158,10 +159,10 @@ function render(creatingTask) {
     tasks[1].forEach((task, i) => {
         doingElement.innerHTML += `
             <div id=${task.id} class="taskbox ${task.marked != "unmarked" ? task.marked : ''}">
-                <button onclick="accordionToggleVisible(this)" class="accordion ${!isAccordionOpenList[1][task.id] || creatingTask ? "" : "active"}">
+                <button onclick="accordionToggleVisible(${task.id})" class="accordion ${!isAccordionOpenList[1][task.id] || creatingTask ? "" : "active"}">
                     ${task.title}
                 </button>
-                <div class="panel" style="display: ${!isAccordionOpenList[1][task.id] ? "none" : "flex"}">
+                <div class="panel" style="display: ${task.accordion == 0 ? "none" : "flex"}">
                     <p>${task.description}</p>
                     <div class="btn-container">
                         <button class="btn" onClick="moveTask(this, -1)">⬅️</button>
@@ -181,10 +182,10 @@ function render(creatingTask) {
     tasks[2].forEach((task, i) => {
         doneElement.innerHTML += `
             <div id=${task.id} class="taskbox ${task.marked != "unmarked" ? task.marked : ''}">
-                <button onclick="accordionToggleVisible(this)" class="accordion ${!isAccordionOpenList[2][task.id] || creatingTask ? "" : "active"}">
+                <button onclick="accordionToggleVisible(${task.id})" class="accordion ${!isAccordionOpenList[2][task.id] || creatingTask ? "" : "active"}">
                     ${task.title}
                 </button>
-                <div class="panel" style="display: ${!isAccordionOpenList[2][task.id] ? "none" : "flex"}">
+                <div class="panel" style="display: ${task.accordion == 0 ? "none" : "flex"}">
                     <p>${task.description}</p>
                     <div class="btn-container">
                         <button class="btn" onClick="moveTask(this, -1)">⬅️</button>
@@ -303,8 +304,10 @@ function toggleModifyPopup(taskElement, mode) {
                         id: parseInt(taskId),
                         title: editTitleInput.value,
                         description: editDescInput.value,
-                        marked: editColorInput.value
+                        marked: editColorInput.value,
+                        accordion: getTaskById(taskElement.id).accordion
                     })
+                    console.log(taskElement)
                 }
             }
         }
@@ -314,14 +317,14 @@ function toggleModifyPopup(taskElement, mode) {
     }
 }
 
-function accordionToggleVisible(element) {
-    element.classList.toggle("active");
-    let panel = element.nextElementSibling;
-    if (panel.style.display === "flex") {
-        panel.style.display = "none";
+function accordionToggleVisible(taskId) {
+    let element = getTaskById(taskId)
+    if (element.accordion == 0){
+        element.accordion = 1
     } else {
-        panel.style.display = "flex";
+        element.accordion = 0
     }
+    render()
 }
 
 //#endregion
