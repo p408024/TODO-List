@@ -451,3 +451,44 @@ function markTask(taskId, color) {
     render()
     updateTaskButtons()
 }
+
+var limitTitle = 80;
+var limitDesc = 500;
+
+// Ejecutar cuando la página se haya cargado
+document.addEventListener("DOMContentLoaded", function () {
+    // Título
+    var titleInput = document.getElementById("title-input");
+    var titleCounter = document.getElementById("contadorTitle");
+    titleCounter.innerHTML = "Max. length: 80 characters";
+
+    titleInput.addEventListener("input", function () {
+        // Obtener la longitud actual del valor del input
+        var init = titleInput.value.length;
+
+        // Calcular los caracteres restantes
+        var total_characters = limitTitle - init;
+
+        // Actualizar el contador con los caracteres restantes
+        titleCounter.innerHTML = "Max. length: " + total_characters + " characters remaining";
+    });
+
+    // Descripción
+    var descInput = document.getElementById("description-input");
+    var descCounter = document.getElementById("contadorDesc");
+    descCounter.innerHTML = "Max. length: " + limitDesc + " characters";
+
+    descInput.addEventListener("input", function () {
+        // Obtener la longitud actual del valor del input
+        var init = descInput.value.length;
+
+        // Calcular los caracteres restantes
+        var total_characters = limitDesc - init;
+
+        // Actualizar el contador con los caracteres restantes
+        descCounter.innerHTML = "Max. length: " + total_characters + " characters remaining";
+    });
+
+    render();
+    updateTaskButtons();
+});
