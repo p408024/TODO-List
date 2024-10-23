@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,21 +36,19 @@
             </div>
             <div class="w85">
                 <p class="edit-p">Password</p>
-                <input
-                    type="password" id="passwordInput" class="titleDesc"
-                    maxlenght="128" minlength="8"
-                    autocomplete="new-password"
-                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
-                    required />
-                    <p class="max-length">From 8 to 128 letters and numbers</p>
+                <input type="password" id="passwordInput" class="titleDesc" maxlenght="128" minlength="8"
+                    autocomplete="new-password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required />
+                <p class="max-length">From 8 to 128 letters and numbers</p>
             </div>
-            
+
             <div class="w85 modiCanc">
                 <button type="submit" id="modification-button" onclick="switchaccount()">Sign in</button>
-                <button id="cancel-button"></button> <!--Hidden button but the page display breaks if it is removed for some godforsaken reason, DO NOT TOUCH-->
+                <button id="cancel-button"></button>
+                <!--Hidden button but the page display breaks if it is removed for some godforsaken reason, DO NOT TOUCH-->
             </div>
         </div>
     </div>
 
 </body>
+
 </html>

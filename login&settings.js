@@ -52,8 +52,10 @@ function getAccounts() {
 // Register screen code
 function registeraccount() {
   let namedupecheck = 0;
+
   // Checks if Username field is empty
   if (userInput.value != "") {
+
     // Checks Username for duplicates
     for (let i = 0; i < accounts.length; i++) {
       console.log("Checking input against username #" + i)
@@ -64,6 +66,7 @@ function registeraccount() {
         console.log("Input matches username #" + i)
       }
     }
+
     // If Username duplicate check has passed (no duplicates), validates password - if that passes the check it gets pushed to the accounts array which updates to the local storage
     // If Username duplicate is found, notifies the user and doesn't do anything with the password or accounts array, then resets the duplicate check variable
     if (namedupecheck == 0) {
@@ -89,9 +92,11 @@ function registeraccount() {
 
 // Login screen code
 function switchaccount() {
+
   // Checks if Username field is empty
   if (userInput.value != "") {
     let namematchcheck = 0;
+
     // Checks each saved Username against the input for matches, if any is found, the check passes
     for (let i = 0; i < accounts.length; i++) {
       console.log("Checking input against username #" + i)
@@ -100,6 +105,7 @@ function switchaccount() {
         namematchcheck++
         j = i;
         i = i + accounts.length;
+
         // Checks the password value for the matched Username, if it matches, sets that account as the current one
         if (accounts[j].pw == passwordInput.value) {
           alert("Welcome back, " + userInput.value + "!")
@@ -112,6 +118,7 @@ function switchaccount() {
         }
       }
     }
+
     // If the check was never passed, notifies the user that no such account exists
     if (namematchcheck == 0) {
       alert(userInput.value + " isn't a registered account.")
