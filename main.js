@@ -2,6 +2,7 @@
 let todoElement = document.getElementById("todo-column")
 let doingElement = document.getElementById("doing-column")
 let doneElement = document.getElementById("done-column")
+
 let modPopup = document.getElementById("modification-popup")
 let editTitleInput = document.getElementById("title-input")
 let editDescInput = document.getElementById("description-input")
@@ -57,7 +58,7 @@ function newTask(columnId) {
         if (allId.includes(x) == false) {
             newId = x
             // console.log(newId)
-            columnToAdd.push({ id: newId, title: "", description: "", marked: "unmarked" })
+            columnToAdd.push({ id: newId, title: "La teva tasca", description: "Descripció", marked: "unmarked" })
             u = 1
             // console.log(columnToAdd)
         }
@@ -216,22 +217,20 @@ function render(creatingTask) {
     });
     doneElement.innerHTML += doneAddButton
 }
-
 render()
 updateTaskButtons()
-
 function updateTaskButtons() {
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < tasks[i].length; j++) {
             const taskId = tasks[i][j].id;
             const taskElement = document.getElementById(taskId); // Supongo que cada tarea tiene un id como atributo HTML
-
+            
             // Botones para mover arriba y abajo
             const moveUpBtn = taskElement.querySelector('button[onClick*="moveTaskUp"]');
             const moveDownBtn = taskElement.querySelector('button[onClick*="moveTaskDown"]');
             const move2UpBtn = taskElement.querySelector('button[onClick*="sortTaskUp"]');
             const move2DownBtn = taskElement.querySelector('button[onClick*="sortTaskDown"]');
-
+            
             // Si la tarea está en la primera posición, desactivar el botón de mover arriba
             if (j === 0) {
                 moveUpBtn.classList.add("disabled");
@@ -245,7 +244,7 @@ function updateTaskButtons() {
                 move2UpBtn.classList.remove("disabled");
                 move2UpBtn.classList.add("btn");
             }
-
+            
             // Si la tarea está en la última posición, desactivar el botón de mover abajo
             if (j === tasks[i].length - 1) {
                 moveDownBtn.classList.add("disabled");
@@ -261,6 +260,7 @@ function updateTaskButtons() {
         }
     }
 }
+
 
 // Opens the task data entry popup
 // taskElement is the task card div, mode is the modify popup desired action (create/edit) as a string
@@ -292,51 +292,51 @@ function toggleModifyPopup(taskElement, mode) {
         modPopup.style.display = "flex"
         editButton.onclick = () => {
             //check if title is empty
+
             /*
             let checkTitle = editTitleInput.value
             while (checkTitle.includes(" ") == true) {
                 checkTitle = checkTitle.replace(" ","")
             }*/
-            if (editTitleInput.value.replaceAll(" ", "") == "") {
+            if (editTitleInput.value.replaceAll(" ","") == "") {
                 window.alert("Please Insert Title")
             } else {
-                let u = 0
-                for (let i = 0; i < tasks[0].length; i++) {
+                let u = 0 
+                for(let i = 0; i < tasks[0].length; i++){
                     if (tasks[0][i].title == editTitleInput.value && tasks[0][i].marked == editColorInput.value) {
                         u++
                     }
                 }
-                for (let i = 0; i < tasks[1].length; i++) {
+                for(let i = 0; i < tasks[1].length; i++){
                     if (tasks[1][i].title == editTitleInput.value && tasks[1][i].marked == editColorInput.value) {
                         u++
                     }
                 }
-                for (let i = 0; i < tasks[2].length; i++) {
+                for(let i = 0; i < tasks[2].length; i++){
                     if (tasks[2][i].title == editTitleInput.value && tasks[2][i].marked == editColorInput.value) {
                         u++
                     }
                 }
-                /*if(editTitleInput.value == "La teva tasca" && editColorInput.value == "unmarked" && mode == "create"){
+                if(editTitleInput.value == "La teva tasca" && editColorInput.value == "unmarked"){
                     u--
-                }*/
+                }
                 if(u>0) {
-                    window.alert("There cannot be two tasks with identical title AND color")
+                    window.alert("Please change title or color")
                 } else{
                     modifyTask({
-                        id: parseInt(taskId),
-                        title: editTitleInput.value,
-                        description: editDescInput.value,
-                        marked: editColorInput.value
+                    id: parseInt(taskId),
+                    title: editTitleInput.value,
+                    description: editDescInput.value,
+                    marked: editColorInput.value
                     })
-                }
+            }
             }
         }
-
+            
     } else {
         modPopup.style.display = "none"
     }
 }
-
 function accordionToggleVisible(element) {
     element.classList.toggle("active");
     let panel = element.nextElementSibling;
@@ -348,6 +348,7 @@ function accordionToggleVisible(element) {
 }
 
 //#endregion
+
 // Helper functions
 function getTaskById(taskId) {
     for (let j = 0; j < tasks.length; j++) {
@@ -394,16 +395,19 @@ function sortTaskDown(taskId) {
             if (tasks[i][j].id == taskId) {
                 // Guardar la tarea que será movida
                 let task = tasks[i][j];
+
                 // Eliminar la tarea de su posición actual
                 tasks[i].splice(j, 1);
+
                 // Añadir la tarea al final del array
                 tasks[i].push(task);
+
                 // Romper el bucle ya que el elemento ha sido encontrado
                 break;
             }
         }
     }
-    render()
+    render();
     updateTaskButtons()
 }
 
@@ -423,7 +427,7 @@ function moveTaskUp(taskId) {
             }
         }
     }
-    render()
+    render();
     updateTaskButtons()
 }
 
@@ -443,7 +447,7 @@ function moveTaskDown(taskId) {
             }
         }
     }
-    render()
+    render();
     updateTaskButtons()
 }
 //funció per marcar tasques de color vermell
