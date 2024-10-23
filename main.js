@@ -12,11 +12,7 @@ let cancelCreate = document.getElementById("cancel-create")
 let editColorInput = document.getElementById("color-input")
 
 // Global state
-let tasks = [[], [], []
-    // [{ id: 20, title: "Comprar ous", description: "anar al mercadona i comprar ous XL" }, { id: 70, title: "Comprar ous", description: "anar al mercadona i comprar ous XL" }],
-    // [{ id: 53, title: "Comprar pomes", description: "pomespomespomespomes" }],
-    // [{ id: 63, title: "Netejar cuina (lejía)", description: "cuinacuinacuinacuinacuinacuina" }]
-]
+let tasks = [[], [], []]
 
 //#region TASK DATA FUNCTIONS
 function modifyTask(newTaskData) {
@@ -38,6 +34,7 @@ function modifyTask(newTaskData) {
 
 function newTask(columnId) {
     let columnToAdd = tasks[columnId]
+
     // Create new task data (id)
     let allId = [0]
     for (let i = 0; i < tasks[0].length; i++) {
@@ -49,17 +46,14 @@ function newTask(columnId) {
     for (let i = 0; i < tasks[2].length; i++) {
         allId.push(tasks[2][i].id)
     }
-    //console.log(allId)
     let newId = 0
     let u = 0
     let x = 0
     while (u == 0) {
         if (allId.includes(x) == false) {
             newId = x
-            // console.log(newId)
             columnToAdd.push({ id: newId, title: "", description: "", marked: "unmarked" })
             u = 1
-            // console.log(columnToAdd)
         }
         x++
     }
@@ -70,6 +64,7 @@ function newTask(columnId) {
 
 // Moves task to the previous or next column, direction is -1 for left and 1 for right
 function moveTask(el, direction) {
+
     // Find task and column ids
     let taskId = el.parentElement.parentElement.parentElement.id
     let columnId = 0
@@ -82,7 +77,6 @@ function moveTask(el, direction) {
     // Find the task element and remove it
     let taskToMove = {}
     for (let i = 0; i < tasks[columnId].length; i++) {
-        // console.log("comparing " + taskId + " with " + tasks[columnId][i]);
         if (tasks[columnId][i].id == taskId) {
             taskToMove = tasks[columnId][i]
             tasks[columnId].splice(i, 1)
@@ -98,7 +92,6 @@ function moveTask(el, direction) {
     render()
     updateTaskButtons()
 }
-// TODO - Update function to drag behaviour ^^^^^^
 
 function deleteTask(taskId) {
     for (let i = 0; i < tasks.length; i++) {
@@ -118,12 +111,11 @@ function deleteTask(taskId) {
 //#region DOM HTML functions
 // Updates task columns HTML, should be called every time "tasks" is modified
 function render(creatingTask) {
-    // Clear columns
 
+    // Clear columns
     let todoAddButton = document.getElementsByClassName("task-plus")[0].outerHTML
     let doingAddButton = document.getElementsByClassName("task-plus")[1].outerHTML
     let doneAddButton = document.getElementsByClassName("task-plus")[2].outerHTML
-
     let isAccordionOpenList = [{}, {}, {}]
     let _cols = [todoElement, doingElement, doneElement]
     for (let j = 0; j < isAccordionOpenList.length; j++) {
@@ -141,13 +133,6 @@ function render(creatingTask) {
 
     // Add a task card HTML element for every task in "tasks" array
     tasks[0].forEach((task, i) => {
-        // todoElement.innerHTML += `
-        //     <div id=${task.id} style="background-color: beige; display: flex; flex-direction: horizontal; margin: .5rem; padding: 1rem; justify-content: center;">
-        //         <button style="width: 100%" onClick="moveTask(this, -1)">⬅️</button>
-        //         <h1 style="margin: .5rem;">${task.id}</h1>
-        //         <button style="width: 100%" onClick="moveTask(this, 1)">➡️</button>
-        //     </div>`
-
         todoElement.innerHTML += `
             <div id=${task.id} class="taskbox ${task.marked != "unmarked" ? task.marked : ''}">
                 <button onclick="accordionToggleVisible(this)" class="accordion ${!isAccordionOpenList[0][task.id] || creatingTask ? "" : "active"}">
@@ -224,7 +209,7 @@ function updateTaskButtons() {
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < tasks[i].length; j++) {
             const taskId = tasks[i][j].id;
-            const taskElement = document.getElementById(taskId); // Supongo que cada tarea tiene un id como atributo HTML
+            const taskElement = document.getElementById(taskId);
 
             // Botones para mover arriba y abajo
             const moveUpBtn = taskElement.querySelector('button[onClick*="moveTaskUp"]');
@@ -267,7 +252,6 @@ function updateTaskButtons() {
 function toggleModifyPopup(taskElement, mode) {
     if (mode == "create") {
         cancelEdit.style.display = "none"
-        //cancelCreate.innerHTML.onclick = `deleteTask(${taskElement.id})`
         cancelCreate.innerHTML = `<div id="cancel-create" onclick="deleteTask(${taskElement.id})">Cancel</div>`
         cancelCreate.style.display = "block"
         editTitleText.innerText = "New Task"
@@ -291,12 +275,8 @@ function toggleModifyPopup(taskElement, mode) {
 
         modPopup.style.display = "flex"
         editButton.onclick = () => {
+
             //check if title is empty
-            /*
-            let checkTitle = editTitleInput.value
-            while (checkTitle.includes(" ") == true) {
-                checkTitle = checkTitle.replace(" ","")
-            }*/
             if (editTitleInput.value.replaceAll(" ", "") == "") {
                 window.alert("Please Insert Title")
             } else {
@@ -316,12 +296,9 @@ function toggleModifyPopup(taskElement, mode) {
                         u++
                     }
                 }
-                /*if(editTitleInput.value == "La teva tasca" && editColorInput.value == "unmarked" && mode == "create"){
-                    u--
-                }*/
-                if(u>0) {
+                if (u > 0) {
                     window.alert("There cannot be two tasks with identical title AND color")
-                } else{
+                } else {
                     modifyTask({
                         id: parseInt(taskId),
                         title: editTitleInput.value,
@@ -362,10 +339,16 @@ function getTaskById(taskId) {
 const hamburgerContainer = document.querySelector('.hamburger-container');
 const menu = document.querySelector('.menu');
 const overlay = document.querySelector('.overlay'); hamburgerContainer.addEventListener('click', () => {
-    hamburgerContainer.classList.toggle('open'); // Añade o quita la clase 'open' al contenedor
-    menu.classList.toggle('open'); // Abre o cierra el menú al hacer clic
-    overlay.classList.toggle('open'); // Muestra u oculta el fondo
-});// Cierra el menú y el fondo al hacer clic en el fondo
+
+    // Añade o quita la clase 'open' al contenedor
+    hamburgerContainer.classList.toggle('open');
+
+    // Abre o cierra el menú al hacer clic
+    menu.classList.toggle('open');
+
+    // Muestra u oculta el fondo
+    overlay.classList.toggle('open');
+});
 
 overlay.addEventListener('click', () => {
     hamburgerContainer.classList.remove('open');
@@ -377,7 +360,6 @@ overlay.addEventListener('click', () => {
 function sortTaskUp(taskId) {
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < tasks[i].length; j++) {
-            //console.log()
             if (tasks[i][j].id == taskId) {
                 tasks[i].unshift(tasks[i][j])
                 tasks[i].splice(j + 1, 1)
@@ -392,12 +374,16 @@ function sortTaskDown(taskId) {
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < tasks[i].length; j++) {
             if (tasks[i][j].id == taskId) {
+
                 // Guardar la tarea que será movida
                 let task = tasks[i][j];
+
                 // Eliminar la tarea de su posición actual
                 tasks[i].splice(j, 1);
+
                 // Añadir la tarea al final del array
                 tasks[i].push(task);
+
                 // Romper el bucle ya que el elemento ha sido encontrado
                 break;
             }
@@ -411,13 +397,16 @@ function moveTaskUp(taskId) {
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < tasks[i].length; j++) {
             if (tasks[i][j].id == taskId) {
+
                 // Verificar que no esté en la primera posición
                 if (j > 0) {
+
                     // Intercambiar la tarea con la tarea anterior
                     let temp = tasks[i][j - 1];
                     tasks[i][j - 1] = tasks[i][j];
                     tasks[i][j] = temp;
                 }
+
                 // Romper el bucle una vez que la tarea ha sido movida
                 break;
             }
@@ -431,13 +420,16 @@ function moveTaskDown(taskId) {
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < tasks[i].length; j++) {
             if (tasks[i][j].id == taskId) {
+
                 // Verificar que no esté en la última posición
                 if (j < tasks[i].length - 1) {
+
                     // Intercambiar la tarea con la tarea siguiente
                     let temp = tasks[i][j + 1];
                     tasks[i][j + 1] = tasks[i][j];
                     tasks[i][j] = temp;
                 }
+
                 // Romper el bucle una vez que la tarea ha sido movida
                 break;
             }
@@ -446,23 +438,16 @@ function moveTaskDown(taskId) {
     render()
     updateTaskButtons()
 }
+
 //funció per marcar tasques de color vermell
 function markTask(taskId, color) {
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < tasks[i].length; j++) {
             if (tasks[i][j].id == taskId) {
                 tasks[i][j].marked = color
-                //console.log("primer " + tasks[i][j].id)
             }
         }
     }
     render()
     updateTaskButtons()
 }
-
-//sortTask(70)
-// markTask(53, "red")
-// markTask(70, "green")
-// markTask(63, "yellow")
-// markTask(20, "white")
-// markTask(50, "blue")

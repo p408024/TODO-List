@@ -13,7 +13,7 @@ body {
     border-radius: 10px;
     margin-right: 1%;
     overflow: auto;
-    max-height: calc(100vh - 20px); 
+    max-height: calc(100vh - 20px);
 
 }
 
@@ -55,7 +55,6 @@ body {
     margin-right: 5%;
 }
 
-/* Clear floats after the columns */
 .col-container:after {
     content: "";
     display: table;
@@ -68,11 +67,9 @@ body {
     cursor: pointer;
     padding: 18px;
     width: calc(100% - 40px);
-    /* Ajuste del ancho para el margen */
     border: none;
     outline: none;
     margin: 10px 20px;
-    /* Ajuste del margen */
     font-family: sans-serif;
     font-size: 16px;
     font-weight: 600;
@@ -95,12 +92,10 @@ body {
     cursor: pointer;
     padding: 8px;
     width: calc(100% - 40px);
-    /* Ajuste del ancho para el margen */
     border-radius: 12px;
     border: none;
     outline: none;
     margin: 14px 20px;
-    /* Ajuste del margen */
     border: inset 2px black;
 }
 
@@ -132,17 +127,12 @@ h3 {
     display: none;
     overflow: hidden;
     transition: 0.4s;
-    display:flex;
-    /* Añadido para centrar contenido */
+    display: flex;
     flex-direction: column;
-    /* Para apilar botones */
-    /* align-items: center; /* Centrando elementos */
 }
 
-/* Estilo del div de cada tasca */
 .taskbox {
     background-color: rgba(0, 0, 0, 0.4);
-    /* Esto deberia ir a una ID unica para cada caja de tasca, para la funcionalidad de asignar colores a las tascas*/
     border-radius: 6px;
     margin-bottom: 5px;
     margin-left: 2px;
@@ -155,32 +145,32 @@ h3 {
     transition: 0.2s;
 }
 
-.black{
+.black {
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-.red{
+.red {
     background-color: rgba(255, 0, 0, 0.6);
 }
 
-.yellow{
+.yellow {
     background-color: rgba(255, 255, 0, 0.6);
 }
 
-.green{
+.green {
     background-color: rgba(0, 128, 0, 0.6);
 }
 
-.blue{
+.blue {
     background-color: rgba(0, 0, 255, 0.6);
 }
 
-.white{
+.white {
     background-color: rgba(255, 255, 255, 0.6);
 }
 
 .btn-container {
-    display: flex;
+    display: table;
     align-items: center;
     width: 100%;
 }
@@ -191,7 +181,6 @@ h3 {
     width: calc((100% / 4) - 1px);
     height: 24px;
     margin: 5px 0.5px;
-    /* Margen entre botones */
     text-align: center;
     background-color: whitesmoke;
     opacity: 0.8;
@@ -204,8 +193,7 @@ h3 {
     display: table-row;
     width: calc((100% / 4) - 1px);
     height: 24px;
-    margin: 5px 0px;
-    /* Margen entre botones */
+    margin: 5px 0.5px;
     text-align: center;
     background-color: whitesmoke;
     opacity: 0.8;
