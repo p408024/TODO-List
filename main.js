@@ -451,3 +451,41 @@ function markTask(taskId, color) {
     render()
     updateTaskButtons()
 }
+
+var limitTitle = 80
+var limitDesc = 500;
+
+$(function () {
+    $('#contadorTitle').html("Max. length: 80 characters");
+    $("#title-input").on("input", function () {
+
+        // Obtener la longitud actual del valor del textarea
+        var init = $(this).val().length;
+
+        // Calcular los caracteres restantes
+        var total_characters = limitTitle - init;
+
+        // Actualizar el contador con los caracteres restantes
+        $('#contadorTitle').html("Max. length: " + total_characters + " characters");
+        var total_characters = 80
+    });
+    render()
+    updateTaskButtons()
+});
+
+$(function () {
+    $("#description-input").on("input", function () {
+        $('#contadorDesc').html("Max. length: " + limitDesc + " characters");
+        
+        // Obtener la longitud actual del valor del textarea
+        var init = $(this).val().length;
+
+        // Calcular los caracteres restantes
+        var total_characters = limitDesc - init;
+
+        // Actualizar el contador con los caracteres restantes
+        $('#contadorDesc').html("Max. length: " + total_characters + " characters");
+    });
+    render()
+    updateTaskButtons()
+});
