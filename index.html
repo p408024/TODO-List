@@ -19,9 +19,9 @@
         </div>
         <div class="menu">
             <ul>
-                <li onclick="location.href='registerpage.html'" role="button">Register</li>
-                <li onclick="location.href='loginpage.html'" role="button">Login</li>
-                <li onclick="location.href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'" role="button">Settings</li>
+                <li onclick="location.href='registerpage.html'" role="button" class="login">Register</li>
+                <li onclick="location.href='loginpage.html'" role="button" class="login">Login</li>
+                <li onclick="location.href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'" role="button" class="settings">Settings</li>
             </ul>
         </div>
         <h1>To-Do List</h1>
@@ -30,7 +30,7 @@
     <div class="col-container">
         <div id="todo-column" class="task-column">
             <h3 class="persistent">Pending</h3>
-            <div class="taskbox">
+            <div class="taskbox none">
                 <button class="accordion active">Tasca 1</button>
                 <div class="panel none">
                     <p>Descripción de la tasca</p>
@@ -41,10 +41,13 @@
                         <button class="btn">✏️</button>
                         <button class="btn">❌</button>
                         <button class="btn">⏩</button>
+                        <button class="btn">⏫</button>
+                        <button class="btn">⏬</button>
+
                     </div>
                 </div>
             </div>
-            <div class="taskbox">
+            <div class="taskbox none">
                 <button class="accordion active">Tasca 2</button>
                 <div class="panel none">
                     <p>Descripción de la tasca</p>
@@ -64,7 +67,7 @@
         </div>
         <div id="doing-column" class="task-column">
             <h3 class="persistent">In Progress</h3>
-            <div class="taskbox">
+            <div class="taskbox none">
                 <button class="accordion active">Tasca 3</button>
                 <div class="panel none">
                     <p>Descripción de la tasca</p>
@@ -85,7 +88,7 @@
         </div>
         <div id="done-column" class="task-column">
             <h3 class="persistent">Complete</h3>
-            <div class="taskbox">
+            <div class="taskbox none">
                 <button class="accordion active">Tasca 4</button>
                 <div class="panel none">
                     <p>Descripción de la tasca</p>
@@ -100,7 +103,7 @@
                 </div>
             </div>
             <div id="task-03" class="task-card"></div>
-            <div class="taskbox">
+            <div class="taskbox none">
                 <button class="accordion active">Tasca 5</button>
                 <div class="panel none">
                     <p>Descripción de la tasca</p>
@@ -115,7 +118,7 @@
                 </div>
             </div>
             <div id="task-04" class="task-card"></div>
-            <div class="taskbox">
+            <div class="taskbox none">
                 <button class="accordion active">Tasca 6</button>
                 <div class="panel none">
                     <p>Descripción de la tasca</p>
@@ -130,7 +133,7 @@
                 </div>
             </div>
             <div id="task-05" class="task-card"></div>
-            <div class="taskbox">
+            <div class="taskbox none">
                 <button class="accordion active">Tasca 7</button>
                 <div class="panel none">
                     <p>Descripción de la tasca</p>
@@ -144,7 +147,7 @@
                     </div>
                 </div>
             </div>
-            <div class="taskbox">
+            <div class="taskbox none">
                 <button class="accordion active">Tasca 8</button>
                 <div class="panel none">
                     <p>Descripción de la tasca</p>
@@ -168,11 +171,13 @@
                 </div>
                 <div class="w85">
                     <p class="edit-p">Title</p>
-                    <input id="title-input" class="titleDesc" type="text">
+                    <input id="title-input" class="titleDesc" type="text" maxlength="80" onclick="resetCounterTitle()">
+                    <p class="max-length" id="contadorTitle">Max. length: 80 characters</p>
                 </div>
                 <div class="w85">
                     <p class="edit-p">Description</p>
-                    <textarea id="description-input" class="titleDesc"></textarea>
+                    <textarea id="description-input" class="titleDesc" maxlength="500" onclick="resetCounterDesc()"></textarea>
+                    <p class="max-length" id="contadorDesc">Max. length: 500 characters</p>
                 </div>
                 <div class="w85 divColors">
                     <p class="edit-p chooseColor">Choose a color: </p>
@@ -188,7 +193,8 @@
                 </div>
                 <div class="w85 modiCanc">
                     <button id="modification-button" onclick="modifyTask()">Accept</button>
-                    <button id="cancel-button" onclick="toggleModifyPopup(false, 'create')">Cancel</button>
+                    <button id="cancel-edit" onclick="toggleModifyPopup(false, 'create')">Cancel</button>
+                    <button id="cancel-create">Cancel</button>
                 </div>
             </div>
         </div>
