@@ -269,6 +269,7 @@ function toggleModifyPopup(taskElement, mode) {
     if (modPopup.style.display != "flex") {
         let taskId = taskElement.id
         let task = getTaskById(taskId)
+        
 
         editTitleInput.value = task.title
         editDescInput.value = task.description
@@ -283,17 +284,17 @@ function toggleModifyPopup(taskElement, mode) {
             } else {
                 let u = 0
                 for (let i = 0; i < tasks[0].length; i++) {
-                    if (tasks[0][i].title == editTitleInput.value && tasks[0][i].marked == editColorInput.value) {
+                    if (tasks[0][i].title.replaceAll(" ", "") == editTitleInput.value.replaceAll(" ", "") && tasks[0][i].marked == editColorInput.value) {
                         u++
                     }
                 }
                 for (let i = 0; i < tasks[1].length; i++) {
-                    if (tasks[1][i].title == editTitleInput.value && tasks[1][i].marked == editColorInput.value) {
+                    if (tasks[1][i].title.replaceAll(" ", "") == editTitleInput.value.replaceAll(" ", "") && tasks[1][i].marked == editColorInput.value) {
                         u++
                     }
                 }
                 for (let i = 0; i < tasks[2].length; i++) {
-                    if (tasks[2][i].title == editTitleInput.value && tasks[2][i].marked == editColorInput.value) {
+                    if (tasks[2][i].title.replaceAll(" ", "") == editTitleInput.value.replaceAll(" ", "") && tasks[2][i].marked == editColorInput.value) {
                         u++
                     }
                 }
@@ -339,6 +340,7 @@ function getTaskById(taskId) {
     }
 }
 
+//#region HAMBURGER
 const hamburgerContainer = document.querySelector('.hamburger-container');
 const menu = document.querySelector('.menu');
 const overlay = document.querySelector('.overlay'); hamburgerContainer.addEventListener('click', () => {
@@ -358,6 +360,7 @@ overlay.addEventListener('click', () => {
     menu.classList.remove('open');
     overlay.classList.remove('open');
 });
+//#enregion
 
 //funció per moure elements al top d'una columna
 function sortTaskUp(taskId) {
@@ -515,6 +518,7 @@ function resetCounterDesc() {
     updateTaskButtons()
 }
 
+//#region ACCOUNTS CODE
 // Accounts management code
 let accounts
 let currentaccount
@@ -536,3 +540,4 @@ function getAccounts() {
         console.log("No current account found, defaulting to default user")
     }
 }
+//#endregion
