@@ -32,13 +32,13 @@
         <div class="pop-up">
             <div class="w85">
                 <p class="edit-p">User</p>
-                <input id="userInput" class="titleDesc" type="text">
+                <input id="userInput" class="titleDesc" type="text" maxlength="64">
             </div>
             <div class="w85">
                 <p class="edit-p">Password</p>
                 <input type="password" id="passwordInput" class="titleDesc" maxlenght="128" minlength="8"
-                    autocomplete="new-password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required />
-                <p class="max-length">From 8 to 128 letters and numbers</p>
+                    autocomplete="new-password" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" required />
+                <p class="max-length">From 8 to 128 letters, numbers and special characters</p>
             </div>
 
             <div class="w85 modiCanc">

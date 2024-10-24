@@ -298,7 +298,7 @@ function toggleModifyPopup(taskElement, mode) {
                     }
                 }
                 if (u > 0) {
-                    window.alert("There cannot be two tasks with identical title AND color")
+                    window.alert("There cannot be two tasks with identical title AND colour")
                 } else {
                     modifyTask({
                         id: parseInt(taskId),

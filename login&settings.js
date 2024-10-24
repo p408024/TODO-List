@@ -67,7 +67,7 @@ function registeraccount() {
       }
     }
 
-    // If Username duplicate check has passed (no duplicates), validates password - if that passes the check it gets pushed to the accounts array which updates to the local storage
+    // If Username duplicate check has passed (no duplicates), validates password - if that passes the check it gets pushed to the accounts array which updates to the local storage and is set as the current account
     // If Username duplicate is found, notifies the user and doesn't do anything with the password or accounts array, then resets the duplicate check variable
     if (namedupecheck == 0) {
       passwordInput.reportValidity();
@@ -75,10 +75,10 @@ function registeraccount() {
         accounts.push({ un: userInput.value, pw: passwordInput.value });
         localStorage.removeItem("UserAccounts");
         localStorage.setItem("UserAccounts", JSON.stringify(accounts));
-        currentaccount = accounts.lenght - 1;
+        currentaccount = accounts.length - 1;
         localStorage.removeItem("CurrentAccount");
-        localStorage.setItem("CurrentAccount", currentaccount);
-        console.log("Switched to Account #" + j)
+        localStorage.setItem("CurrentAccount", JSON.stringify(currentaccount));
+        console.log("Switched to Account #" + currentaccount)
         alert("Account " + userInput.value + " has been successfully registered!")
       }
     } else {
