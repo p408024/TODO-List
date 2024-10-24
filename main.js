@@ -308,7 +308,7 @@ function toggleModifyPopup(taskElement, mode) {
                         u++
                     }
                 }
-                if (task.title == editTitleInput.value && task.marked == editColorInput.value) {
+                if (task.title.replaceAll(" ","") == editTitleInput.value.replaceAll(" ","") && task.marked == editColorInput.value) {
                     u--
                 }
                 if (u > 0) {
