@@ -21,7 +21,7 @@ function modifyTask(newTaskData) {
         for (let i = 0; i < tasks[j].length; i++) {
             if (tasks[j][i].id == newTaskData.id) {
                 tasks[j][i] = newTaskData
-                console.log(tasks[j][i])
+                //console.log(tasks[j][i])
             }
         }
     }
@@ -279,6 +279,16 @@ function toggleModifyPopup(taskElement, mode) {
         editButton.onclick = () => {
 
             //check if title is empty
+            /*let checkTitle = editTitleInput.value
+            console.log(checkTitle)
+            while (checkTitle[0] != " ") {
+                checkTitle = checkTitle.slice(0,1)
+                console.log(checkTitle)
+            }
+            while (checkTitle[checkTitle.length - 1] != " ") {
+                checkTitle = checkTitle.slice(0,-1)
+                console.log(checkTitle)
+            }*/
             if (editTitleInput.value.replaceAll(" ", "") == "") {
                 window.alert("Please Insert Title")
             } else {
@@ -297,6 +307,9 @@ function toggleModifyPopup(taskElement, mode) {
                     if (tasks[2][i].title.replaceAll(" ", "") == editTitleInput.value.replaceAll(" ", "") && tasks[2][i].marked == editColorInput.value) {
                         u++
                     }
+                }
+                if (task.title == editTitleInput.value && task.marked == editColorInput.value) {
+                    u--
                 }
                 if (u > 0) {
                     window.alert("There cannot be two tasks with identical title AND colour")
